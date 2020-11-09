@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Contact Email</th>
+      <th>Total Price</th>
+      <th>Phone</th>
+      <th>Products</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.created_at.to_time.strftime("%d %b %Y at %I:%M %p") %></td>
+        <td><%= order.customer.first_name rescue nil %> <%= order.customer.last_name rescue nil %></td>
+        <td><%= order.contact_email %></td>
+        <td><%= order.total_price %> <%= order.currency %></td>
+        <td><%= order.customer.phone rescue nil %></td>
+       <td><%= order.line_items.map(&:title).join(", ") %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
