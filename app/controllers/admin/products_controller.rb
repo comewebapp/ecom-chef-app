@@ -52,6 +52,11 @@ class Admin::ProductsController < Admin::ApplicationController
     # new_product.vendor = "Burton"
     new_product.save
 
+    @product.product_collections.each do |product_collection|
+      collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
+      collection.add_product new_product
+    end
+
     redirect_to admin_products_path, notice: 'Product is approved'
   end
 

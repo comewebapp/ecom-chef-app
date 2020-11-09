@@ -1,0 +1,18 @@
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collections.each do |collection| %>
+        <tr>
+          <td><%= collection.id %></td>
+          <td><%= collection.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

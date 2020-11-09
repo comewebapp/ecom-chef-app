@@ -38,6 +38,9 @@ class ProductsController < ApplicationController
     @product.user_id = current_user.id
     respond_to do |format|
       if @product.save
+        params[:product][:collection].reject(&:empty?).each do |collection_id|
+          ProductCollection.create(product_id: @product.id, collection_id: collection_id)
+        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
