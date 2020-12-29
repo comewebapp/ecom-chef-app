@@ -45,12 +45,20 @@ class Admin::ProductsController < Admin::ApplicationController
 
     new_product = ShopifyAPI::Product.new
     new_product.title = @product.name
-    new_product.description = @product.description
-    new_product.stock = @product.available_quantity
-    new_product.price = @product.price
-    # new_product.product_type = "Snowboard"
-    # new_product.vendor = "Burton"
+    new_product.body_html = @product.description
     new_product.save
+    new_product.variants[0].price = @product.price
+    new_product.variants[0].sku = @product.available_quantity
+
+    new_product.save
+
+    if @product.image_base64.present?
+      i = ShopifyAPI::Image.new
+      i.attach_image(Base64.decode64(@product.image_base64.gsub("data:image/png;base64,", ""))) # <-- attach_image is a method, not an attribute
+      new_product.images << i
+
+      new_product.save
+    end
 
     @product.product_collections.each do |product_collection|
       collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)

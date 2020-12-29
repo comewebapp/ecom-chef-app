@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Description</th>
       <!-- <th>Image</th> -->
@@ -20,6 +21,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td><%= image_tag product.image_base64, width: 100 if product.image_base64.present? %></td>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <!-- <td><%#= image_tag product.get_image_url, style: 'height:50px;width:100px;margin-bottom:20px;' %></td> -->

@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+    @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) rescue nil
     respond_to do |format|
       if @product.save
         params[:product][:collection].reject(&:empty?).each do |collection_id|

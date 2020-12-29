@@ -43,6 +43,11 @@
     <%= form.select :collection, ShopifyAPI::CustomCollection.all.map{|c| [c.title, c.id]}, {}, {multiple: true} %>
   </div>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image_base64 %>
+  </div>
+
   <!-- <div class="field"> -->
     <%#= form.label :size %>
     <%#= form.text_field :size %>
