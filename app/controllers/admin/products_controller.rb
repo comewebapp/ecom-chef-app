@@ -66,6 +66,7 @@ class Admin::ProductsController < Admin::ApplicationController
         collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
         collection.add_product new_product
       end
+      @product.update(status: true)
       redirect_to admin_products_path, notice: 'Product is approved'
     else
       redirect_to admin_products_path, alert: 'Product is not approved'
