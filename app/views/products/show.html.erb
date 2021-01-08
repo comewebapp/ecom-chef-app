@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @product.image_base64, width: 200 if @product.image_base64.present? %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
@@ -23,6 +28,11 @@
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @product.weight %>
 </p>
 
 <!-- <p> -->

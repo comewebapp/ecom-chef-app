@@ -41,7 +41,7 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def approve
-    @product.update(status: true)
+    
 
     new_product = ShopifyAPI::Product.new
     new_product.title = @product.name
@@ -49,23 +49,28 @@ class Admin::ProductsController < Admin::ApplicationController
     new_product.save
     new_product.variants[0].price = @product.price
     new_product.variants[0].sku = @product.available_quantity
+    # new_product.variants[0].inventory_quantity = @product.available_quantity
+    new_product.variants[0].weight = @product.weight
 
-    new_product.save
+    if new_product.save!
 
-    if @product.image_base64.present?
-      i = ShopifyAPI::Image.new
-      i.attach_image(Base64.decode64(@product.image_base64.gsub("data:image/png;base64,", ""))) # <-- attach_image is a method, not an attribute
-      new_product.images << i
+      if @product.image_base64.present?
+        i = ShopifyAPI::Image.new
+        i.attach_image(Base64.decode64(@product.image_base64.gsub("data:image/png;base64,", ""))) # <-- attach_image is a method, not an attribute
+        new_product.images << i
 
-      new_product.save
+        new_product.save
+      end
+
+      @product.product_collections.each do |product_collection|
+        collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
+        collection.add_product new_product
+      end
+      redirect_to admin_products_path, notice: 'Product is approved'
+    else
+      redirect_to admin_products_path, alert: 'Product is not approved'
     end
 
-    @product.product_collections.each do |product_collection|
-      collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
-      collection.add_product new_product
-    end
-
-    redirect_to admin_products_path, notice: 'Product is approved'
   end
 
   private

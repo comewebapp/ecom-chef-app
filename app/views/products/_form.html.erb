@@ -39,6 +39,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
     <%= form.label :collection %>
     <%= form.select :collection, ShopifyAPI::CustomCollection.all.map{|c| [c.title, c.id]}, {}, {multiple: true} %>
   </div>

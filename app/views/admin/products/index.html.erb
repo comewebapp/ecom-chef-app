@@ -4,12 +4,13 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
+        <th scope="col">Image</th>
         <th scope="col">Chef</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Stock</th>
         <th scope="col">Price</th>
-        <!-- <th scope="col">Image</th> -->
+        <th scope="col">Weight</th>
         <th scope="col">Status</th>
         <th></th>
         <th></th>
@@ -19,12 +20,13 @@
       <% @products.each do |product| %>
         <tr>
           <th scope="row"><%= product.id %></th>
+          <td><%= image_tag product.image_base64, width: 100 if product.image_base64.present? %></td>
           <td><%= product.user.try(:email) %></td>
           <td><%= product.name %></td>
           <td><%= product.description %></td>
           <td><%= product.available_quantity %></td>
           <td><%= product.price %></td>
-          <!-- <td><%#= image_tag product.get_image_url, width: '100', height: '100' %></td> -->
+          <td><%= product.weight %></td>
           <td><%= product.status_name %></td>
           <td><%= link_to "Mark as Approved", approve_admin_product_path(product.id), method: :put, data: { confirm: 'Are you sure?' } if product.is_pending?  %></td>
           <td><%= link_to "View", admin_product_path(product.id) %></td>
