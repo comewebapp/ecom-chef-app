@@ -53,7 +53,7 @@ header {
 }
 
 .mainlogo {
-	width: 22%;
+    width: 22%;
     margin-right: 8%;
 }
 
@@ -62,51 +62,51 @@ header {
 }
 
 .navbar {
-	width: 60%;
+    width: 60%;
 }
 
 .navbar ul {
-	display: flex;
-	flex-direction: row;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar ul li {
-	margin-right: 25px;
-	line-height: 16px;
+    margin-right: 25px;
+    line-height: 16px;
 }
 
 .navbar ul li:last-child {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 .navbar ul li.active {
-	border-bottom: 2px solid;
-	padding-bottom: 2px;
+    border-bottom: 2px solid;
+    padding-bottom: 2px;
 }
 
 .navbar ul li a {
-	color: #000;
-	text-transform: uppercase;
+    color: #000;
+    text-transform: uppercase;
     text-decoration: none;
     font-size: 12px;
     letter-spacing: 0.02em;
 }
 
 .navbar ul li a:hover {
-	color: #333;
+    color: #333;
 }
 
 .signout {
-	align-self: flex-start;
+    align-self: flex-start;
     width: calc(10% - 32px);
     text-align: right;
 }
 
 .signout a {
-	width: 32px;
+    width: 32px;
     height: 32px;
     position: absolute;
     z-index: 999;
@@ -153,26 +153,26 @@ header {
 
 
 
-.content-wrapper {	
+.content-wrapper {  
     margin-top: 80px;
     padding-left: 30%;
     overflow: auto;
 }
 
 .field {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .field .col-left {
-	width: 25%;
+    width: 25%;
     margin-right: 10%;
 }
 
 .field .col-left label {
-	text-transform: uppercase;
-	font-weight: 600;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .field p.subcol-title {
@@ -194,7 +194,7 @@ header {
 }
 
 .field .col-right {
-	width: 65%;
+    width: 65%;
 }
 
 .field .col-right .inputdata {
@@ -214,7 +214,7 @@ header {
 }
 
 .field .col-right .inputdata::placeholder {
-	color: #ccc;
+    color: #ccc;
 }
 
 .field .col-right textarea.inputdata {
@@ -246,7 +246,7 @@ header {
 }
 
 .field .col-right select.inputdata option:checked {
-/* 	background: linear-gradient(0deg, #c6f1cf 0%, #c6f1cf 100%); */
+/*  background: linear-gradient(0deg, #c6f1cf 0%, #c6f1cf 100%); */
     background: linear-gradient(0deg, #a1ca9e 0%, #a1ca9e 100%);
 
 }
@@ -254,13 +254,13 @@ header {
 /* Subfield */
 
 .subfield {
-	margin-bottom: 20px;
-	display: flex;
+    margin-bottom: 20px;
+    display: flex;
     align-items: flex-start;
 }
 
 .subfield:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .subfield .subcolumn-left {
@@ -273,8 +273,8 @@ header {
 }
 
 .subfield .subcolumn-right input.inputright {
-	text-align: right;
-	position: relative;
+    text-align: right;
+    position: relative;
     z-index: 2;
     float: left;
     width: 100%;
@@ -338,7 +338,7 @@ header {
 }
 
 .photo-upload .photo-edit input {
-	display: none;
+    display: none;
 }
 
 .photo-upload .photo-edit label {
@@ -385,7 +385,7 @@ header {
 /* Submit Button*/
 
 .submitProduct {
-	-webkit-appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     box-shadow: none;
@@ -407,108 +407,243 @@ header {
 
 @media (min-width: 1600px) {
 
-	.content-wrapper {
-	    padding-right: 10%;
-	}
+    .content-wrapper {
+        padding-right: 10%;
+    }
 }
 
 @media (max-width: 1024px) {
   
-  	.content-wrapper {	
-	    padding-left: 0;
-	}
+    .content-wrapper {  
+        padding-left: 0;
+    }
 }
 
 @media (max-width: 767px) {
   
-  	body {
-  		padding: 30px 12px 60px;
-	}
-	
-	.mainlogo {
-	    width: 100%;
-	    max-width: 200px;
-	    margin-bottom: 30px;
-	}
-	
-	.navbar {
-	    width: 100%;
-	}
-	
-	.navbar ul {
-		justify-content: space-between;
-		white-space: nowrap;
-		overflow-x: auto;
-	}
-	
-	.navbar ul li {
-		margin-right: 10px;
-	}
-	
-	.signout {
-	    position: absolute;
-	    right: 50px;
-	    width: calc(10% - 24px);
-	}
+    body {
+        padding: 30px 12px 60px;
+    }
+    
+    .mainlogo {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 30px;
+    }
+    
+    .navbar {
+        width: 100%;
+    }
+    
+    .navbar ul {
+        justify-content: space-between;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+    
+    .navbar ul li {
+        margin-right: 10px;
+    }
+    
+    .signout {
+        position: absolute;
+        right: 50px;
+        width: calc(10% - 24px);
+    }
 
-	.signout a {
-		width: 24px;
-	    height: 24px;
-	}
-	
-	.signout a:before {
-	    height: 24px;
-	    right: 12px;
-	}
-	
-	.signout a:after {
-	    width: 24px;
-	    top: 12px;
-	}
-	
-	.content-wrapper {	
-	    margin-top: 40px;
-	}
-	
-	.field {
-		margin-bottom: 40px;
-	}
-	
-	.field .col-left {
-		width: 100%;
-		padding-right: 0;
-		margin-bottom: 5px;
-	}
-	
-	.field .col-right {
-		width: 100%;
-	}
-	
-	.subfield {
-		margin-top: 20px;
-	}
-	
-	.subfield .subcolumn-left {
-		width: 50%;
-		margin-right: 10%;
-	}
+    .signout a {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .signout a:before {
+        height: 24px;
+        right: 12px;
+    }
+    
+    .signout a:after {
+        width: 24px;
+        top: 12px;
+    }
+    
+    .content-wrapper {  
+        margin-top: 40px;
+    }
+    
+    .field {
+        margin-bottom: 40px;
+    }
+    
+    .field .col-left {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 5px;     
+        margin-right: 0;
+    }
+    
+    .field .col-right {
+        width: 100%;
+    }
+    
+    .subfield {
+        margin-top: 20px;
+    }
+    
+    .subfield .subcolumn-left {
+        width: 50%;
+        margin-right: 10%;
+    }
 
-	.subfield .subcolumn-right {
-	    width: 40%;
-	}
-	
-	.photo-upload {
-	    max-width: 200px;
-	    margin: 30px auto 0;
-	}
-	
-	.photo-preview {
-	    width: 200px;
-	    height: 200px;
-	}
-		
-	.submitProduct {
-		width: 100%;
-		font-size: 16px;
-	}
+    .subfield .subcolumn-right {
+        width: 40%;
+    }
+    
+    .photo-upload {
+        max-width: 200px;
+        margin: 30px auto 0;
+    }
+    
+    .photo-preview {
+        width: 200px;
+        height: 200px;
+    }
+        
+    .submitProduct {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+
+
+
+/* SIGN IN PAGE */
+
+.mainback {
+    align-self: flex-start;
+    width: 70%;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.mainback a  {
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    content: '';
+    display: block;
+    height: 18px;
+    width: 18px;
+    -webkit-transform-origin: 0% 100%;
+    -ms-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.sign-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-left: 25%;
+}
+
+.sign-left img {
+    max-width: 350px;
+    margin-right: 80px;
+}
+
+.sign-right {
+    max-width: 400px;
+}
+
+.sign-right .title {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.sign-right .smalltext {
+    color: #999;
+    font-family: Arial;
+    font-size: 12px;   
+}
+
+.sign-right .smalltext a {
+    color: #333;  
+}
+
+.sign-right .smalltext a:hover {
+    color: #000;  
+}
+
+.sign-right .field {
+    margin-bottom: 20px;
+}
+
+.sign-right .inputdata {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    padding: 10px 13px;
+    width: 100%;
+    border-radius: 0;
+    color: #333;
+    letter-spacing: 0.04em;
+    font-family: Arial;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.field .col-right .inputdata::placeholder {
+    color: #ccc;
+}
+
+.submit-dark {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 60px;
+    font-family: 'Didot', 'Playfair Display', 'Times New Roman';
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.submit-dark:hover {
+    background-color: #333;
+}
+
+.register-btn {
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    
+    .mainback {
+        position: absolute;
+        right: 20px;
+        width: 30px;
+        height: 40px;
+    }
+    
+    .sign-wrapper {
+        padding-left: 0;
+    }
+    
+    .sign-left {
+        display: none;
+    }
+    
+    .sign-right .smalltext {
+        font-size: 14px;   
+    }
 }

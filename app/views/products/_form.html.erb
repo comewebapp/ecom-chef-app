@@ -86,7 +86,7 @@
           </div>
           <div class="subcolumn-right">
             <div class="input-group suffix">
-              <%= form.text_field :amount, class: 'inputdata inputright', placeholder: '10,00', required: true %>
+              <%= form.number_field :amount, class: 'inputdata inputright', placeholder: '10,00', required: true, step: '.01', value: (number_with_precision(product.amount, precision: 2) || 0) %>
               <span class="input-group-addon">eur</span>
             </div>
           </div>
@@ -101,7 +101,7 @@
           </div>
           <div class="subcolumn-right">
             <div class="input-group suffix"> 
-              <%= form.number_field :delivery_price, class: 'inputdata inputright inputdelivery', readonly: true %>
+              <%= form.number_field :delivery_price, class: 'inputdata inputright inputdelivery', readonly: true, value: (number_with_precision(product.delivery_price, precision: 2) || 0) %>
               <span class="input-group-addon">eur</span>
             </div>
           </div>
@@ -114,7 +114,7 @@
           </div>
           <div class="subcolumn-right">
             <div class="input-group suffix">
-              <%= form.number_field :price, class: 'inputdata inputright inputtotal', readonly: true %>
+              <%= form.number_field :price, class: 'inputdata inputright inputtotal', readonly: true, value: (number_with_precision(product.price, precision: 2) || 0) %>
               <span class="input-group-addon">eur</span>
             </div>
           </div>
@@ -161,7 +161,7 @@
   $("#product_amount").keyup(function(){
     var product_amount = parseFloat($(this).val());
     var product_delivery_price = parseFloat($("#product_delivery_price").val());
-    var product_price = product_amount + product_delivery_price;
+    var product_price = (product_amount + product_delivery_price).toFixed(2);
     $("#product_price").val(product_price);
   })
 </script>
