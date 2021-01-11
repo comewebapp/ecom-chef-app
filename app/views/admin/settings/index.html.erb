@@ -1,0 +1,7 @@
+<%= form_with(model:[:admin, @setting], local:true) do |form| %>
+  <div class="form-group">
+    <%= form.label :delivery_price %>
+    <%= form.number_field :delivery_price, class: "form-control", placeholder: "Enter Delivery Price" %>
+  </div>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

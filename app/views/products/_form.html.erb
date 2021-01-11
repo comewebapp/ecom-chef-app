@@ -1,69 +1,167 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<section class="content-wrapper">  
+  <%= form_with(model: product, local: true) do |form| %>
 
-      <ul>
-        <% product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+          <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <div class="col-left">
+        <label for="product_name">Nombre plato</label>
+        <p class="smalltext">Este será el título de tu plato y será visible para todo el mundo, te recomendamos que utilices entres 3 y 4 palabras que lo describan de forma clara.</p>
+      </div>
+      <div class="col-right">
+        <%= form.text_field :name, class: 'inputdata', placeholder: 'Ej. Revuelto de trigueros', required: true %>
+      </div>
+    </div>      
+    
+    <div class="field">
+      <div class="col-left">
+        <label for="product_description">Descripción</label>
+        <p class="smalltext">Esta descripción aparecerá en la ficha de tu plato.</p>
+        <p class="smalltext">Te recomendamos que incluyas la técnica con la que lo has preparado (plancha, vapor, cazuela, etc.) y los ingredientes que mejor describan tu plato.</p>
+      </div>
+      <div class="col-right">
+        <%= form.text_area :description, class: 'inputdata', placeholder: 'Ej. Espárragos trigueros a la plancha con huevos revueltos, aceite de oliva virgen extra, sal gorda y orégano.', required: true %>
+      </div>
+    </div>
+    
+    <div class="field">
+      <div class="col-left">
+        <label for="product_collection">Selecciona tipo de cocina</label>
+        <p class="smalltext">Selecciona el tipo de cocina de tu plato.</p>
+        <p class="smalltext">Si consideras que tu plato puede encajar en varias clasificaciones inclúyelas todas, eso nos ayudará a dar visibilidad a tu plato dentro de las diferentes categorías.</p>
+      </div> 
+      <div class="col-right">
+        <%= form.select :collection, ShopifyAPI::CustomCollection.all.map{|c| [c.title, c.id]}, {}, {multiple: true, class: 'inputdata'} %>
+      </div>
+    </div>
+    
+    <hr/>
+    
+    <div class="field">
+      <div class="col-left">
+        <label for="product_price">Precio del plato</label>
+        <p class="smalltext">Selecciona el tipo de cocina de tu plato.</p>
+        <p class="smalltext">Si necesitas ayuda para definirlo puedes ponerte en <a href="mailto:info@come.com">contacto con nosotros</a> y te asesoraremos.</p>
+        <p class="smalltext">Te recordamos que a esta cantidad le añadiremos 2,50€ euros fijos para cubrir la parte del delivery que ofrece Come.</p>
+      </div> 
+      <div class="col-right">
+        <div class="subfield">
+          <div class="subcolumn-left">
+            <p class="subcol-title">Cantidad en gramos</p>
+            <p class="smalltext">Calcula los gramos que va a tener el plato para que sea una ración.</p>
+          </div>
+          <div class="subcolumn-right">
+            <div class="input-group suffix"> 
+              <%= form.number_field :weight, class: 'inputdata inputright', placeholder: '135', required: true %>
+              <span class="input-group-addon">gr</span>
+            </div>
+          </div>
+        </div>
+        <div class="subfield">  
+          <div class="subcolumn-left">
+            <p class="subcol-title">Unidades</p>
+            <p class="smalltext">La cantidad de unidades que puedes servir de este plato.</p>
+          </div>
+          <div class="subcolumn-right">
+            <div class="input-group suffix"> 
+              <%= form.number_field :available_quantity, class: 'inputdata inputright', placeholder: '1', required: true %>
+              <span class="input-group-addon">uds.</span>
+            </div>
+          </div>
+        </div>
+        <div class="subfield">  
+          <div class="subcolumn-left">
+            <p class="subcol-title">Precio del plato</p>
+            <p class="smalltext">Esta es la cantidad que recibirás por cada pedido.</p>
+          </div>
+          <div class="subcolumn-right">
+            <div class="input-group suffix">
+              <%= form.text_field :amount, class: 'inputdata inputright', placeholder: '10,00', required: true %>
+              <span class="input-group-addon">eur</span>
+            </div>
+          </div>
+        </div>
+        
+        <hr/>
+        
+        <div class="subfield">  
+          <div class="subcolumn-left">
+            <p class="subcol-title">Delivery fijo</p>
+            <p class="smalltext">Precio fijo delivery</p>
+          </div>
+          <div class="subcolumn-right">
+            <div class="input-group suffix"> 
+              <%= form.number_field :delivery_price, class: 'inputdata inputright inputdelivery', readonly: true %>
+              <span class="input-group-addon">eur</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="subfield">  
+          <div class="subcolumn-left">
+            <p class="subcol-title">Precio final Cliente</p>
+            <p class="smalltext">Este es el precio total que será visible para el cliente.</p>
+          </div>
+          <div class="subcolumn-right">
+            <div class="input-group suffix">
+              <%= form.number_field :price, class: 'inputdata inputright inputtotal', readonly: true %>
+              <span class="input-group-addon">eur</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <hr/>
+          
+    <div class="field">
+      
+      <div class="col-left">
+        <label for="product_collection">Fotografía del plato</label>
+        <p class="smalltext">La imagen de tu plato será tu carta de presentación.</p>
+        <p class="smalltext">Para añadirla haz click sobre el botón del lápiz y selecciona en tus archivos la fotografía que deseas subir.</p>
+        <p class="smalltext">Si tienes cualquier duda sobre este proceso o cuál es la mejor manera de fotografiar tu plato contacta con nosotros.</p>
+      </div> 
+      <div class="col-right">
+        <div class="photo-upload">
+          <div class="photo-edit">
+            <%= form.file_field :image_base64, accept: '.png, .jpg, .jpeg' %>
+            <label for="product_image_base64">
+              <i class="fas fa-pencil-alt"></i>
+            </label>
+          </div>
+          <div class="photo-preview">
+            <!-- <div id="imagePreview" style="background-image: url('/assets/noimage.png');"></div> -->
+            <div id="imagePreview" style="background-image: url('<%= @product.image_url %>');"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="actions">
+      <%= form.submit class: 'submitProduct', value: 'Validar plato' %>
     </div>
   <% end %>
+  
+</section>
 
 
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <!-- <div class="field"> -->
-    <%#= form.label :image %>
-    <%#= form.file_field :image %>
-  <!-- </div> -->
-
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :available_quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :weight %>
-    <%= form.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :collection %>
-    <%= form.select :collection, ShopifyAPI::CustomCollection.all.map{|c| [c.title, c.id]}, {}, {multiple: true} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image_base64 %>
-  </div>
-
-  <!-- <div class="field"> -->
-    <%#= form.label :size %>
-    <%#= form.text_field :size %>
-  <!-- </div> -->
-
-  <!-- <div class="field"> -->
-    <%#= form.label :online %>
-    <%#= form.check_box :online %>
-  <!-- </div> -->
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<script type="text/javascript">
+  $("#product_amount").keyup(function(){
+    var product_amount = parseFloat($(this).val());
+    var product_delivery_price = parseFloat($("#product_delivery_price").val());
+    var product_price = product_amount + product_delivery_price;
+    $("#product_price").val(product_price);
+  })
+</script>

@@ -22,5 +22,13 @@ class Product < ApplicationRecord
   def is_approved?
     self.status
   end
+
+  def delivery_price
+    Setting.current.delivery_price
+  end
+
+  def image_url
+    image_base64.present? ? image_base64 : '/assets/noimage.png'
+  end
     
 end
