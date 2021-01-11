@@ -28,7 +28,7 @@ class Product < ApplicationRecord
   end
 
   def image_url
-    image_base64.present? ? image_base64 : '/assets/noimage.png'
+    image_base64.present? ? image_base64 : ActionController::Base.helpers.asset_path('noimage.png')
   end
     
 end
