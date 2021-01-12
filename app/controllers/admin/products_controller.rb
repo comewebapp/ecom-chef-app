@@ -41,11 +41,10 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def approve
-    
-
     new_product = ShopifyAPI::Product.new
     new_product.title = @product.name
     new_product.body_html = @product.description
+    new_product.product_type = "Plato"
     new_product.save
     new_product.variants[0].price = @product.price
     new_product.variants[0].sku = @product.available_quantity
