@@ -1,5 +1,5 @@
 <section class="content-wrapper">  
-  <%= form_with(model: product, local: true) do |form| %>
+  <%= form_with(model: product, local: true, id: "product_form") do |form| %>
 
     <% if product.errors.any? %>
       <div id="error_explanation">
@@ -142,7 +142,6 @@
             </label>
           </div>
           <div class="photo-preview">
-            <!-- <div id="imagePreview" style="background-image: url('/assets/noimage.png');"></div> -->
             <div id="imagePreview" style="background-image: url('<%= @product.image_url %>');"></div>
           </div>
         </div>
@@ -150,7 +149,7 @@
     </div>
     <hr/>
     <div class="actions">
-      <%= form.submit class: 'submitProduct', value: 'Validar plato' %>
+      <%= form.submit class: 'submitProduct', value: 'Validar plato', "data-disable-with": 'Validar plato' %>
     </div>
   <% end %>
   
@@ -167,4 +166,14 @@
     set_price();
   })
   set_price();
+
+  $("#product_form").submit(function( event ) {
+    var fileName = $("#product_image_base64").val();
+    if(fileName) {
+    }
+    else {
+      alert("Please select product image");
+      return false;
+    }
+  });
 </script>
