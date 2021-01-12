@@ -86,7 +86,7 @@
           </div>
           <div class="subcolumn-right">
             <div class="input-group suffix">
-              <%= form.number_field :amount, class: 'inputdata inputright', placeholder: '10,00', required: true, step: '.01', value: (number_with_precision(product.amount, precision: 2) || 0) %>
+              <%= form.number_field :amount, class: 'inputdata inputright', placeholder: '10,00', required: true, step: '.01', value: number_with_precision(product.amount, precision: 2) %>
               <span class="input-group-addon">eur</span>
             </div>
           </div>
@@ -156,12 +156,15 @@
   
 </section>
 
-
 <script type="text/javascript">
-  $("#product_amount").keyup(function(){
-    var product_amount = parseFloat($(this).val());
+  function set_price(){
+    var product_amount = parseFloat($("#product_amount").val()) || 0;
     var product_delivery_price = parseFloat($("#product_delivery_price").val());
     var product_price = (product_amount + product_delivery_price).toFixed(2);
     $("#product_price").val(product_price);
+  }
+  $("#product_amount").keyup(function(){
+    set_price();
   })
+  set_price();
 </script>
