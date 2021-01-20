@@ -40,7 +40,7 @@
             <li class="nav-item <% if params[:controller]=='products' && params[:action]=='new' %>active<% end %>">
               <a class="nav-link" href="/products/new">Nuevo plato</a>
             </li>
-            <li class="nav-item <% if params[:controller]=='products' && params[:action]=='index' %>active<% end %>">
+            <li class="nav-item <% if params[:controller]=='products' && (params[:action]=='index' || params[:action]=='show') %>active<% end %>">
               <a class="nav-link" href="/products">Mis platos</a>
             </li>
             <li class="nav-item <% if params[:controller]=='orders' && params[:action]=='index' %>active<% end %>">

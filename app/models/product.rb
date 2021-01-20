@@ -15,6 +15,14 @@ class Product < ApplicationRecord
     self.status ? "approved" : "pending"
   end
 
+  def status_name_spanish_abbr
+    self.status ? "Apr." : "Pend."
+  end
+
+  def status_name_spanish_abbr_title
+    self.status ? "Aprovado" : "Pendiente"
+  end
+
   def is_pending?
     !self.status
   end

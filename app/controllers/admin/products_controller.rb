@@ -61,6 +61,15 @@ class Admin::ProductsController < Admin::ApplicationController
         new_product.save
       end
 
+      if @product.ingredients.present?
+        new_product.add_metafield(ShopifyAPI::Metafield.new({
+          namespace: 'come',
+          key: 'ingredientes',
+          value: @product.ingredients,
+          value_type: 'string'
+        }))
+      end
+
       @product.product_collections.each do |product_collection|
         collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
         collection.add_product new_product

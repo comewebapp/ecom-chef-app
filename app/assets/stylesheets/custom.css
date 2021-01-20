@@ -53,7 +53,7 @@ header {
 }
 
 .mainlogo {
-    width: 22%;
+  width: 22%;
     margin-right: 8%;
 }
 
@@ -62,51 +62,51 @@ header {
 }
 
 .navbar {
-    width: 60%;
+  width: 60%;
 }
 
 .navbar ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar ul li {
-    margin-right: 25px;
-    line-height: 16px;
+  margin-right: 25px;
+  line-height: 16px;
 }
 
 .navbar ul li:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar ul li.active {
-    border-bottom: 2px solid;
-    padding-bottom: 2px;
+  border-bottom: 2px solid;
+  padding-bottom: 2px;
 }
 
 .navbar ul li a {
-    color: #000;
-    text-transform: uppercase;
+  color: #000;
+  text-transform: uppercase;
     text-decoration: none;
     font-size: 12px;
     letter-spacing: 0.02em;
 }
 
 .navbar ul li a:hover {
-    color: #333;
+  color: #333;
 }
 
 .signout {
-    align-self: flex-start;
+  align-self: flex-start;
     width: calc(10% - 32px);
     text-align: right;
 }
 
 .signout a {
-    width: 32px;
+  width: 32px;
     height: 32px;
     position: absolute;
     z-index: 999;
@@ -160,19 +160,19 @@ header {
 }
 
 .field {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .field .col-left {
-    width: 25%;
+  width: 25%;
     margin-right: 10%;
 }
 
 .field .col-left label {
-    text-transform: uppercase;
-    font-weight: 600;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .field p.subcol-title {
@@ -194,7 +194,7 @@ header {
 }
 
 .field .col-right {
-    width: 65%;
+  width: 65%;
 }
 
 .field .col-right .inputdata {
@@ -214,7 +214,7 @@ header {
 }
 
 .field .col-right .inputdata::placeholder {
-    color: #ccc;
+  color: #ccc;
 }
 
 .field .col-right textarea.inputdata {
@@ -254,13 +254,13 @@ header {
 /* Subfield */
 
 .subfield {
-    margin-bottom: 20px;
-    display: flex;
+  margin-bottom: 20px;
+  display: flex;
     align-items: flex-start;
 }
 
 .subfield:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .subfield .subcolumn-left {
@@ -273,8 +273,8 @@ header {
 }
 
 .subfield .subcolumn-right input.inputright {
-    text-align: right;
-    position: relative;
+  text-align: right;
+  position: relative;
     z-index: 2;
     float: left;
     width: 100%;
@@ -323,11 +323,60 @@ header {
     border-left: 0; 
 }
 
+.col50 {
+    width: 48%;
+    margin-right: 2%;
+    float: left;
+}
+
+.col50-title {
+    margin-bottom: 30px;
+}
+
+.inputCheck input {
+  position: absolute;
+    opacity: 0;
+}
+
+.inputCheck {
+    cursor: pointer;
+}
+
+.inputCheck .checkmark {
+    height: 12px;
+    width: 12px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    float: left !important;
+    margin-right: 15px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.inputCheck input:checked ~ .checkmark {
+    background-color: #000;
+}
+
+.inputCheck .deliverTime {
+    margin-bottom: 20px;
+}
+
+.inputCheck .deliverTime span {
+    color: #777;
+    font-family: 'Arial';
+    font-size: 12px;
+    line-height: 22px;
+    margin-left: 30px;
+    display: block;
+}
+
 /* Image preview */
 
 .photo-upload {
     position: relative;
-    max-width: 300px;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 .photo-upload .photo-edit {
@@ -335,10 +384,34 @@ header {
     right: -17px;
     z-index: 1;
     top: -17px;
+    display: none;
 }
 
-.photo-upload .photo-edit input {
-    display: none;
+.photo-upload .photo-edit input,
+.photo-upload .photo-add input {
+  display: none;
+}
+
+.photo-add {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.photo-upload .photo-add label {
+  text-transform: uppercase;
+  border: 1px solid #000;
+  padding: 10px 30px;
+  font-family: 'Didot', 'Playfair Display', 'Times New Roman';
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    background: #fff;
+  color: #000;
+}
+
+.photo-upload .photo-add label:hover {
+  background: #000;
+  color: #fff;
 }
 
 .photo-upload .photo-edit label {
@@ -372,6 +445,7 @@ header {
     position: relative;
     border: 1px solid #ccc;
     padding: 20px;
+    margin-right: 30px;
 }        
 
 .photo-preview > div {
@@ -385,7 +459,7 @@ header {
 /* Submit Button*/
 
 .submitProduct {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     box-shadow: none;
@@ -393,7 +467,7 @@ header {
     border: 1px solid #000;
     background: #fff;
     text-transform: uppercase;
-    padding: 14px 80px;
+    padding: 14px 140px;
     float: right;
     font-family: 'Didot', 'Playfair Display', 'Times New Roman';
     letter-spacing: 0.02em;
@@ -407,111 +481,124 @@ header {
 
 @media (min-width: 1600px) {
 
-    .content-wrapper {
-        padding-right: 10%;
-    }
+  .content-wrapper {
+      padding-right: 10%;
+  }
 }
 
 @media (max-width: 1024px) {
   
     .content-wrapper {  
-        padding-left: 0;
-    }
+      padding-left: 0;
+  }
 }
 
 @media (max-width: 767px) {
   
     body {
-        padding: 30px 12px 60px;
-    }
-    
-    .mainlogo {
-        width: 100%;
-        max-width: 200px;
-        margin-bottom: 30px;
-    }
-    
-    .navbar {
-        width: 100%;
-    }
-    
-    .navbar ul {
-        justify-content: space-between;
-        white-space: nowrap;
-        overflow-x: auto;
-    }
-    
-    .navbar ul li {
-        margin-right: 10px;
-    }
-    
-    .signout {
-        position: absolute;
-        right: 50px;
-        width: calc(10% - 24px);
-    }
+      padding: 30px 12px 60px;
+  }
+  
+  .mainlogo {
+      width: 100%;
+      max-width: 200px;
+      margin-bottom: 30px;
+  }
+  
+  .navbar {
+      width: 100%;
+  }
+  
+  .navbar ul {
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  
+  .navbar ul li {
+    margin-right: 10px;
+  }
+  
+  .signout {
+      position: absolute;
+      right: 50px;
+      width: calc(10% - 24px);
+  }
 
-    .signout a {
-        width: 24px;
-        height: 24px;
-    }
-    
-    .signout a:before {
-        height: 24px;
-        right: 12px;
-    }
-    
-    .signout a:after {
-        width: 24px;
-        top: 12px;
-    }
-    
-    .content-wrapper {  
-        margin-top: 40px;
-    }
-    
-    .field {
-        margin-bottom: 40px;
-    }
-    
-    .field .col-left {
-        width: 100%;
-        padding-right: 0;
-        margin-bottom: 5px;     
-        margin-right: 0;
-    }
-    
-    .field .col-right {
-        width: 100%;
-    }
-    
-    .subfield {
-        margin-top: 20px;
-    }
-    
-    .subfield .subcolumn-left {
-        width: 50%;
-        margin-right: 10%;
-    }
+  .signout a {
+    width: 24px;
+      height: 24px;
+  }
+  
+  .signout a:before {
+      height: 24px;
+      right: 12px;
+  }
+  
+  .signout a:after {
+      width: 24px;
+      top: 12px;
+  }
+  
+  .content-wrapper {  
+      margin-top: 40px;
+  }
+  
+  .field {
+    margin-bottom: 40px;
+  }
+  
+  .field .col-left {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 5px;   
+    margin-right: 0;
+  }
+  
+  .field .col-right {
+    width: 100%;
+  }
+  
+  .subfield {
+    margin-top: 20px;
+  }
+  
+  .subfield .subcolumn-left {
+    width: 50%;
+    margin-right: 10%;
+  }
 
-    .subfield .subcolumn-right {
-        width: 40%;
-    }
+  .subfield .subcolumn-right {
+      width: 40%;
+  }
+  
+  .col50 {
+      width: 44%;
+      margin-right: 3%;
+      margin-left: 3%;
+      margin-top: 20px;
+  }
+  
+  .photo-upload {
+      max-width: 240px;
+      margin: 30px auto 0;
+  }
+  
+  .photo-preview {
+      width: 240px;
+      height: 240px;
+      margin-right: 0;
+  }
+  
+  .photo-add {
+      margin-left: auto;
+      margin-right: auto;
+  }
     
-    .photo-upload {
-        max-width: 200px;
-        margin: 30px auto 0;
-    }
-    
-    .photo-preview {
-        width: 200px;
-        height: 200px;
-    }
-        
-    .submitProduct {
-        width: 100%;
-        font-size: 16px;
-    }
+  .submitProduct {
+    width: 100%;
+    font-size: 16px;
+  }
 }
 
 
@@ -520,7 +607,7 @@ header {
 /* SIGN IN PAGE */
 
 .mainback {
-    align-self: flex-start;
+  align-self: flex-start;
     width: 70%;
     justify-content: flex-end;
     display: flex;
@@ -542,9 +629,9 @@ header {
 }
 
 .sign-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
     padding-left: 25%;
 }
 
@@ -554,12 +641,12 @@ header {
 }
 
 .sign-right {
-    max-width: 400px;
+  max-width: 400px;
 }
 
 .sign-right .title {
-    text-transform: uppercase;
-    font-weight: 600;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .sign-right .smalltext {
@@ -577,7 +664,7 @@ header {
 }
 
 .sign-right .field {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sign-right .inputdata {
@@ -597,11 +684,11 @@ header {
 }
 
 .field .col-right .inputdata::placeholder {
-    color: #ccc;
+  color: #ccc;
 }
 
 .submit-dark {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     box-shadow: none;
@@ -619,31 +706,202 @@ header {
 }
 
 .submit-dark:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 .register-btn {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 @media (max-width: 767px) {
-    
-    .mainback {
-        position: absolute;
-        right: 20px;
-        width: 30px;
-        height: 40px;
-    }
-    
-    .sign-wrapper {
-        padding-left: 0;
-    }
-    
-    .sign-left {
-        display: none;
-    }
-    
-    .sign-right .smalltext {
-        font-size: 14px;   
-    }
+  
+  .mainback {
+      position: absolute;
+    right: 20px;
+    width: 30px;
+    height: 40px;
+  }
+  
+  .sign-wrapper {
+    padding-left: 0;
+  }
+  
+  .sign-left {
+    display: none;
+  }
+  
+  .sign-right .smalltext {
+      font-size: 14px;   
+  }
 }
+
+/* PRODUCTS */
+
+.productsTable {
+    width: 90%;    
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.productsTable abbr {
+    font-size: 0;
+    text-decoration: none;
+    cursor: default;
+    border: none;
+}
+
+.productsTable abbr::before {
+    font-size: 12px;
+    content: attr(title) " ";
+    display: table-cell;
+}
+
+.productsTable td, 
+.productsTable th {
+  padding: 15px;
+}
+
+.productsTable thead tr {
+    border-bottom: 2px solid #000;
+}
+
+.productsTable thead tr th {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.productsTable thead tr th:nth-child(1) { width: 45%; text-align: left; }
+.productsTable thead tr th:nth-child(2) { width: 15%; }
+.productsTable thead tr th:nth-child(3) { width: 15%; }
+.productsTable thead tr th:nth-child(4) { width: 25%; }
+
+.productsTable tbody {
+    font-weight: normal;
+}
+
+.productsTable tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.productsTable tbody tr.pending {
+    color: #aaa;
+}
+
+.productsTable tbody tr td.title {
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.productsTable tbody tr td.stock {
+    text-transform: uppercase;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.productsTable tbody tr td.status {
+    text-transform: uppercase;
+    font-family: Arial;
+}
+
+.productsTable tbody tr td .btn-actions {
+    text-transform: uppercase;
+    background: #000;
+    border-radius: 5px;
+    color: #fff;
+    padding: 4px 8px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.productsTable tbody tr td .btn-actions:hover {
+    background: #666;
+}
+
+.productsTable tbody tr td .btn-actions.edit {
+    background: #25a925;
+}
+
+.productsTable tbody tr td .btn-actions.edit:hover {
+    background: #56cc56;
+}
+
+@media (max-width: 1024px) {
+  
+    .productsTable {
+        width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .productsTable abbr {
+      font-size: 12px;
+  }
+  
+  .productsTable abbr::before {     
+      font-size: 0;
+      text-decoration: none;
+  }
+  
+  .productsTable thead tr th:nth-child(1) { width: 40%; }
+  .productsTable thead tr th:nth-child(3) { width: 20%; }
+  
+  .productsTable td, 
+  .productsTable th {
+      padding: 15px 0;
+  }
+
+  .productsTable tbody tr td .btn-actions {
+      display: block;
+      margin: 4px;
+  }
+
+}
+
+.single .single-product-title {
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.single .single-product-field {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    margin: 30px 0 10px;
+}
+
+.single hr {
+  margin: 20px 0;
+}
+
+.single p {
+  color: #999;
+    font-family: Arial;
+    font-size: 13px; 
+}
+
+.single .single-button {
+  border: 1px solid #000;
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 20px 10px 20px 0;
+    text-decoration: none;
+}
+
+.single .single-button:hover {
+  color: #fff;  
+  background: #000;
+}
+
+
+

@@ -1,32 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="co-md-12">
-      <div class="col-md-4">
-        <%= image_tag @product.image_base64, width: 200 if @product.image_base64.present? %>
-      </div>
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-6">Id</div>
-          <div class="col-md-6"><%= @product.id %></div>
+<div class="row">
+  <div class="co-md-12">
+    <div class="col-md-4">
+      <%= image_tag @product.image_base64, width: 200 if @product.image_base64.present? %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-6">Id</div>
+        <div class="col-md-6"><%= @product.id %></div>
 
-          <div class="col-md-6">Name</div>
-          <div class="col-md-6"><%= @product.name %></div>
+        <div class="col-md-6">Name</div>
+        <div class="col-md-6"><%= @product.name %></div>
 
-          <div class="col-md-6">Description</div>
-          <div class="col-md-6"><%= @product.description %></div>
+        <div class="col-md-6">Description</div>
+        <div class="col-md-6"><%= @product.description %></div>
 
-          <div class="col-md-6">Stock</div>
-          <div class="col-md-6"><%= @product.available_quantity %></div>
+        <div class="col-md-6">Stock</div>
+        <div class="col-md-6"><%= @product.available_quantity %></div>
 
-          <div class="col-md-6">Price</div>
-          <div class="col-md-6"><%= @product.price %></div>
+        <div class="col-md-6">Price</div>
+        <div class="col-md-6"><%= @product.price %></div>
 
-          <div class="col-md-6">Weight</div>
-          <div class="col-md-6"><%= @product.weight %></div>
+        <div class="col-md-6">Weight</div>
+        <div class="col-md-6"><%= @product.weight %></div>
 
-          <div class="col-md-6">Status</div>
-          <div class="col-md-6"><%= @product.status_name %></div>
-        </div>
+        <div class="col-md-6">Status</div>
+        <div class="col-md-6"><%= @product.status_name %></div>
       </div>
     </div>
   </div>

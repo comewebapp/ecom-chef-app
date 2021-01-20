@@ -1,49 +1,54 @@
-<p id="notice"><%= notice %></p>
+<section class="content-wrapper single">
+  <h1 class="single-product-title"><%= @product.name %></h1>
+  
+  <h3 class="single-product-field">Descripción</h3>
+  <p><%= @product.description %></p>
+  <hr>
+  
+  <h3 class="single-product-field">Ingredientes</h3>
+  <p><%= @product.ingredients %></p>
+  <hr>
+  
+  <h3 class="single-product-field">Tipo de cocina</h3>
+  <p>Asiática, Italiana</p>
+  <hr>
+  
+  <h3 class="single-product-field">Precio</h3>
+  <!-- <p>10,90 Eur</p> -->
+  <p><%= @product.price %> Eur</p>
+  <hr>
+  
+  <h3 class="single-product-field">...</h3>
+  <p>...</p>
+  <hr>
+  
+  <h3 class="single-product-field">...</h3>
+  <p>...</p>
+  <hr>
+  
+  <h3 class="single-product-field">Imagen</h3>
+  <div class="photo-preview">
+    <div id="imagePreview" style="background-image: url('<%= @product.image_url %>');"></div>
+  </div>
+  <p>&nbsp;</p>
+  <hr>
+  
+  <%= link_to 'Volver', products_path, class: "single-button" %>
+  <%= link_to 'Editar', edit_product_path(@product), class: "single-button" %>
+</section>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image_base64, width: 200 if @product.image_base64.present? %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<!-- <p> -->
-  <!-- <strong>Image:</strong> -->
-  <%#= image_tag @product.get_image_url, style: 'height:50px;width:100px;margin-bottom:20px;' %>
-<!-- </p> -->
-
-<p>
+<!-- <p>
   <strong>Stock:</strong>
-  <%= @product.available_quantity %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <%#= @product.available_quantity %>
 </p>
 
 <p>
   <strong>Weight:</strong>
-  <%= @product.weight %>
+  <%#= @product.weight %>
 </p>
-
-<!-- <p> -->
-  <!-- <strong>Size:</strong> -->
-  <%#= @product.size %>
-<!-- </p> -->
 
 <p>
   <strong>Status:</strong>
-  <%= @product.status_name %>
+  <%#= @product.status_name %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+ -->

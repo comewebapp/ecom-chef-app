@@ -1,45 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Description</th>
-      <!-- <th>Image</th> -->
-      <th>Stock</th>
-      <th>Price</th>
-      <th>Weight</th>
-      <!-- <th>Size</th> -->
-      <th>Status</th>
-      <!-- <th>Online</th> -->
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
+<section class="content-wrapper">
+  <table class="productsTable">
+    <thead>
       <tr>
-        <td><%= image_tag product.image_base64, width: 100 if product.image_base64.present? %></td>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <!-- <td><%#= image_tag product.get_image_url, style: 'height:50px;width:100px;margin-bottom:20px;' %></td> -->
-        <td><%= product.available_quantity %></td>
-        <td><%= product.price %></td>
-        <td><%= product.weight %></td>
-        <!-- <td><%= product.size %></td> -->
-        <td><%= product.status_name %></td>
-        <!-- <td><%= product.online %></td> -->
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <!-- <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <th>Plato</th>
+        <th><abbr title="Unidades">Uds.</abbr></th>
+        <th>Estado</th>
+        <th>Acciones</th>         
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="<%= product.status_name %>">
+          <td class="title"><%= product.name %></td>
+          <td class="stock"><%= product.available_quantity %></td>
+          <td class="status"><abbr title="<%= product.status_name_spanish_abbr_title %>"><%= product.status_name_spanish_abbr %></abbr></td>
+          <td>
+            <%= link_to 'Ver', product, class: "btn-actions" %>
+            <%= link_to 'Editar', edit_product_path(product), class: "btn-actions edit" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

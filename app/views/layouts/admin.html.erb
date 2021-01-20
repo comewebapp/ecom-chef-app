@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   
     <meta charset="utf-8">
@@ -77,10 +77,10 @@
 	<div class="container-fluid main-container">
 		<div class="col-md-2 sidebar">
 			<ul class="nav nav-pills nav-stacked">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="/admin/products">Products</a></li>
-				<li><a href="/admin/collections">Collections</a></li>
-                <li><a href="/admin/settings">Settings</a></li>
+				<li class="<% if params[:controller]=='admin/dashboard' %>active<% end %>"><a href="/admin">Home</a></li>
+				<li class="<% if params[:controller]=='admin/products' %>active<% end %>"><a href="/admin/products">Products</a></li>
+				<li class="<% if params[:controller]=='admin/collections' %>active<% end %>"><a href="/admin/collections">Collections</a></li>
+        <li class="<% if params[:controller]=='admin/settings' %>active<% end %>"><a href="/admin/settings">Settings</a></li>
 			</ul>
         </div>
         <div class="col-md-10 content">

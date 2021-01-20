@@ -33,6 +33,17 @@
         <%= form.text_area :description, class: 'inputdata', placeholder: 'Ej. Espárragos trigueros a la plancha con huevos revueltos, aceite de oliva virgen extra, sal gorda y orégano.', required: true %>
       </div>
     </div>
+
+    <div class="field">
+      <div class="col-left">
+        <label for="product_description">Ingredientes</label>
+        <p class="smalltext">Escribe todos los ingredientes que utilizas para crear tu plato.</p>
+        <p class="smalltext">Es importante que incluyas todos, incluso aquellos que le dan tu toque personal para que podamos clasificarlos teniendo en cuenta posibles intolerancias.</p>
+      </div>
+      <div class="col-right">
+        <%= form.text_area :ingredients, class: 'inputdata', placeholder: 'Ej. Azúcar, almendras, etc.', required: true %>
+      </div>
+    </div>
     
     <div class="field">
       <div class="col-left">
@@ -130,19 +141,19 @@
       <div class="col-left">
         <label for="product_collection">Fotografía del plato</label>
         <p class="smalltext">La imagen de tu plato será tu carta de presentación.</p>
-        <p class="smalltext">Para añadirla haz click sobre el botón del lápiz y selecciona en tus archivos la fotografía que deseas subir.</p>
+        <p class="smalltext">Para añadirla haz click sobre el botón "Añadir foto" y selecciona en tus archivos la imagen que quieres subir.</p>
         <p class="smalltext">Si tienes cualquier duda sobre este proceso o cuál es la mejor manera de fotografiar tu plato contacta con nosotros.</p>
       </div> 
       <div class="col-right">
         <div class="photo-upload">
-          <div class="photo-edit">
-            <%= form.file_field :image_base64, accept: '.png, .jpg, .jpeg' %>
-            <label for="product_image_base64">
-              <i class="fas fa-pencil-alt"></i>
-            </label>
-          </div>
           <div class="photo-preview">
             <div id="imagePreview" style="background-image: url('<%= @product.image_url %>');"></div>
+          </div>
+          <div class="photo-add">
+            <%= form.file_field :image_base64, accept: '.png, .jpg, .jpeg' %>
+            <label for="product_image_base64">
+              <span>Añadir foto</span>
+            </label>
           </div>
         </div>
       </div>
