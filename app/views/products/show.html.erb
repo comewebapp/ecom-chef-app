@@ -10,23 +10,26 @@
   <hr>
   
   <h3 class="single-product-field">Tipo de cocina</h3>
-  <p>Asiática, Italiana</p>
+  <p><%= @product.collection_names %></p>
+  <hr>
+
+  <h3 class="single-product-field">
+    Información del plato
+  </h3>
+  <p>GRAMOS: <%= @product.weight %> </p>
+  <p>PRECIO: <%= @product.price_in_euro %></p>
+  <p>DELIVERY: <%= @product.delivery_price_in_euro %></p>
+  <p>PRECIO VENTA: <%= @product.total_price_in_euro %></p>
+  <hr>
+
+  <h3 class="single-product-field">
+    Horario de cocinado
+  </h3>
+  <p>DÍAS: <%= @product.delivery_days %></p>
+  <p>HORARIOS: <%= @product.delivery_hours %></p>
   <hr>
   
-  <h3 class="single-product-field">Precio</h3>
-  <!-- <p>10,90 Eur</p> -->
-  <p><%= @product.price %> Eur</p>
-  <hr>
-  
-  <h3 class="single-product-field">...</h3>
-  <p>...</p>
-  <hr>
-  
-  <h3 class="single-product-field">...</h3>
-  <p>...</p>
-  <hr>
-  
-  <h3 class="single-product-field">Imagen</h3>
+  <h3 class="single-product-field">Imagen de plato</h3>
   <div class="photo-preview">
     <div id="imagePreview" style="background-image: url('<%= @product.image_url %>');"></div>
   </div>

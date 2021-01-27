@@ -135,6 +135,60 @@
     </div>
     
     <hr/>
+
+    <div class="field">
+      <div class="col-left">
+        <label for="product_ingredients">Selecciona horario de cocinado</label>
+        <p class="smalltext">Indica qué días y en qué franjas horarias estará disponible tu plato.</p>
+        <p class="smalltext">Puedes elegir uno, varios o todos.</p>
+        <p class="smalltext">Si necesitas ayuda para definirlo puedes ponerte en <a href="mailto:info@come.com">contacto con nosotros</a> y te asesoraremos.</p>
+        
+      </div>
+      <div class="col-right">
+        <div class="col50">
+          <div class="col50-title">Días</div>
+          <% [["monday", "Lunes"], ["tuesday", "Martes"], ["wednesday", "Miércoles"], ["thursday", "Jueves"], ["friday", "Viernes"], ["saturday", "Sábado"], ["sunday", "Domingo"]].each do |day| %>
+            <label class="inputCheck">
+              <%= form.check_box "#{day[0]}" %>
+              <span class="checkmark"></span>
+              <div class="deliverTime"><%= day[1] %></div>
+            </label>
+          <% end %>
+        </div>
+        <div class="col50">
+          <div class="col50-title">Horarios</div>
+          
+          <label class="inputCheck">
+            <%= form.check_box :breakfast %>
+            <span class="checkmark"></span>
+            <div class="deliverTime">Desayuno
+              <span>7:30 - 12:30</span>
+            </div>
+          </label>
+          <label class="inputCheck">
+            <%= form.check_box :food %>
+            <span class="checkmark"></span>
+            <div class="deliverTime">Comida
+            <span>13:30 - 16:30</span></div>
+          </label>
+          <label class="inputCheck">
+            <%= form.check_box :snack %>
+            <span class="checkmark"></span>
+            <div class="deliverTime">Merienda
+            <span>16:30 - 20:30</span></div>
+          </label>
+          <label class="inputCheck">
+            <%= form.check_box :cena %>
+            <span class="checkmark"></span>
+            <div class="deliverTime">Cena
+            <span>20:30 - 23:30</span></div>
+          </label>
+        </div>
+        
+      </div>
+    </div>
+
+    <hr/>
           
     <div class="field">
       

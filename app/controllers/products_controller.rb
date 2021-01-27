@@ -36,6 +36,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+    @product.days = [params[:product][:monday], params[:product][:tuesday], params[:product][:wednesday], params[:product][:thursday], params[:product][:friday], params[:product][:saturday], params[:product][:sunday]]
+    @product.schedule = [params[:product][:breakfast], params[:product][:food], params[:product][:snack], params[:product][:cena]]
     @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) rescue nil
     respond_to do |format|
       if @product.save
