@@ -232,13 +232,15 @@
   })
   set_price();
 
-  $("#product_form").submit(function( event ) {
-    var fileName = $("#product_image_base64").val();
-    if(fileName) {
-    }
-    else {
-      alert("Por favor, añade una imagen de tu plato.");
-      return false;
-    }
-  });
+  <% if params[:action] == "new" %>
+    $("#product_form").submit(function( event ) {
+      var fileName = $("#product_image_base64").val();
+      if(fileName) {
+      }
+      else {
+        alert("Por favor, añade una imagen de tu plato.");
+        return false;
+      }
+    });
+  <% end %>
 </script>

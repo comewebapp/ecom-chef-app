@@ -58,6 +58,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        @product.update(image_base64: ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read))) if params[:product][:image_base64].present?
+        @product.update(status: false)
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
