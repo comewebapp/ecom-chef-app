@@ -147,9 +147,9 @@
       <div class="col-right">
         <div class="col50">
           <div class="col50-title">Días</div>
-          <% [["monday", "Lunes"], ["tuesday", "Martes"], ["wednesday", "Miércoles"], ["thursday", "Jueves"], ["friday", "Viernes"], ["saturday", "Sábado"], ["sunday", "Domingo"]].each do |day| %>
+          <% [["monday", "Lunes"], ["tuesday", "Martes"], ["wednesday", "Miércoles"], ["thursday", "Jueves"], ["friday", "Viernes"], ["saturday", "Sábado"], ["sunday", "Domingo"]].each_with_index do |day, index| %>
             <label class="inputCheck">
-              <%= form.check_box "#{day[0]}" %>
+              <%= form.check_box "#{day[0]}", checked: @product.days[index] == "1" %>
               <span class="checkmark"></span>
               <div class="deliverTime"><%= day[1] %></div>
             </label>
@@ -159,26 +159,26 @@
           <div class="col50-title">Horarios</div>
           
           <label class="inputCheck">
-            <%= form.check_box :breakfast %>
+            <%= form.check_box :breakfast, checked: @product.schedule[0] == "1" %>
             <span class="checkmark"></span>
             <div class="deliverTime">Desayuno
               <span>7:30 - 12:30</span>
             </div>
           </label>
           <label class="inputCheck">
-            <%= form.check_box :food %>
+            <%= form.check_box :food, checked: @product.schedule[1] == "1" %>
             <span class="checkmark"></span>
             <div class="deliverTime">Comida
             <span>13:30 - 16:30</span></div>
           </label>
           <label class="inputCheck">
-            <%= form.check_box :snack %>
+            <%= form.check_box :snack, checked: @product.schedule[2] == "1" %>
             <span class="checkmark"></span>
             <div class="deliverTime">Merienda
             <span>16:30 - 20:30</span></div>
           </label>
           <label class="inputCheck">
-            <%= form.check_box :cena %>
+            <%= form.check_box :cena, checked: @product.schedule[3] == "1" %>
             <span class="checkmark"></span>
             <div class="deliverTime">Cena
             <span>20:30 - 23:30</span></div>
