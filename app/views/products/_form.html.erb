@@ -52,7 +52,7 @@
         <p class="smalltext">Si consideras que tu plato puede encajar en varias clasificaciones inclúyelas todas, eso nos ayudará a dar visibilidad a tu plato dentro de las diferentes categorías.</p>
       </div> 
       <div class="col-right">
-        <%= form.select :collection, ShopifyAPI::CustomCollection.all.select{|c| !c.handle.include?("control_")}.map{|c| [c.title, c.id]}, {}, {multiple: true, class: 'inputdata', size: 7} %>
+        <%= form.select :collection, ShopifyAPI::CustomCollection.all.select{|c| !c.handle.include?("control_")}.map{|c| [c.title, c.id]}, {selected: @product.product_collections.map(&:collection_id)}, {multiple: true, class: 'inputdata', size: 7} %>
       </div>
     </div>
     

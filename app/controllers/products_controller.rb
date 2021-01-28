@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = current_user.products.all
+    @products = current_user.products.order(:created_at).all
     # products = RestClient.get("https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_API_PASSWORD']}@#{ENV['SHOPIFY_SHOP_NAME']}.myshopify.com/admin/api/2020-01/products.json")
     products = ShopifyAPI::Product.all
   end
@@ -58,8 +58,15 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        @product.update(image_base64: ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read))) if params[:product][:image_base64].present?
-        @product.update(status: false)
+        @product.days = [params[:product][:monday], params[:product][:tuesday], params[:product][:wednesday], params[:product][:thursday], params[:product][:friday], params[:product][:saturday], params[:product][:sunday]]
+        @product.schedule = [params[:product][:breakfast], params[:product][:food], params[:product][:snack], params[:product][:cena]]
+        @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) if params[:product][:image_base64].present?
+        @product.status = false
+        @product.save
+        @product.product_collections.destroy_all
+        params[:product][:collection].reject(&:empty?).each do |collection_id|
+          ProductCollection.create(product_id: @product.id, collection_id: collection_id)
+        end
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else

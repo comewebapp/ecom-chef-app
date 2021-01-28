@@ -38,7 +38,7 @@ class Product < ApplicationRecord
   end
 
   def delivery_price_in_euro
-    number_to_currency(delivery_price, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " EUR" rescue nil
+    number_to_currency(delivery_price, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " eur" rescue nil
   end
 
   def image_url
@@ -47,16 +47,16 @@ class Product < ApplicationRecord
 
   def collection_names
     ids = product_collections.map(&:collection_id).join(",")
-    return ShopifyAPI::CustomCollection.where(ids: ids).map(&:title).join(", ") if ids
+    return ShopifyAPI::CustomCollection.where(ids: ids).map(&:title).join(", ") if ids.present?
     return nil
   end
 
   def price_in_euro
-    number_to_currency(amount, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " EUR" rescue nil
+    number_to_currency(amount, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " eur" rescue nil
   end
 
   def total_price_in_euro
-    number_to_currency(price, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " EUR" rescue nil
+    number_to_currency(price, :unit => "", :separator => ",", :delimiter => ".", :format => "%u %n") + " eur" rescue nil
   end
 
   def delivery_days
