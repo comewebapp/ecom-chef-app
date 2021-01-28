@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_154946) do
+ActiveRecord::Schema.define(version: 2021_01_28_170142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_154946) do
     t.text "ingredients"
     t.text "days", default: ["0", "0", "0", "0", "0", "0", "0"], array: true
     t.text "schedule", default: ["0", "0", "0", "0"], array: true
+    t.string "shopify_product_id"
   end
 
   create_table "settings", force: :cascade do |t|

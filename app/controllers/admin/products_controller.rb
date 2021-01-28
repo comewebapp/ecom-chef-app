@@ -41,7 +41,8 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def approve
-    new_product = ShopifyAPI::Product.new
+    new_product = ShopifyAPI::Product.find @product.shopify_product_id rescue nil
+    new_product = ShopifyAPI::Product.new if new_product.nil?
     new_product.title = @product.name
     new_product.body_html = @product.description
     new_product.product_type = "Plato"
@@ -53,6 +54,8 @@ class Admin::ProductsController < Admin::ApplicationController
 
     if new_product.save!
 
+      @product.update(shopify_product_id: new_product.id)
+
       if @product.image_base64.present?
         i = ShopifyAPI::Image.new
         i.attach_image(Base64.decode64(@product.image_base64.gsub("data:image/png;base64,", ""))) # <-- attach_image is a method, not an attribute
@@ -61,6 +64,7 @@ class Admin::ProductsController < Admin::ApplicationController
         new_product.save
       end
 
+      # ingredients
       if @product.ingredients.present?
         new_product.add_metafield(ShopifyAPI::Metafield.new({
           namespace: 'come',
@@ -69,6 +73,22 @@ class Admin::ProductsController < Admin::ApplicationController
           value_type: 'string'
         }))
       end
+
+      # disponibleDias
+      new_product.add_metafield(ShopifyAPI::Metafield.new({
+        namespace: 'come',
+        key: 'disponibleDias',
+        value: @product.delivery_days.gsub(", ", "|"),
+        value_type: 'string'
+      }))
+
+      # disponibleFranjas
+      new_product.add_metafield(ShopifyAPI::Metafield.new({
+        namespace: 'come',
+        key: 'disponibleFranjas',
+        value: @product.delivery_hours.gsub(", ", "|"),
+        value_type: 'string'
+      }))
 
       @product.product_collections.each do |product_collection|
         collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
