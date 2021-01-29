@@ -10,13 +10,6 @@ class ProductsController < ApplicationController
     products = ShopifyAPI::Product.all
   end
 
-
-
-
-
-
-
-
   # GET /products/1
   # GET /products/1.json
   def show
@@ -57,16 +50,34 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product#.update(product_params)
+        @product.name = params[:product][:name]
+        @product.description = params[:product][:description]
+        @product.available_quantity = params[:product][:available_quantity]
+        @product.price = params[:product][:price]
+        @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) if params[:product][:image_base64].present?
+        @product.weight = params[:product][:weight]
+        @product.amount = params[:product][:amount]
+        @product.ingredients = params[:product][:ingredients]
         @product.days = [params[:product][:monday], params[:product][:tuesday], params[:product][:wednesday], params[:product][:thursday], params[:product][:friday], params[:product][:saturday], params[:product][:sunday]]
         @product.schedule = [params[:product][:breakfast], params[:product][:food], params[:product][:snack], params[:product][:cena]]
-        @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) if params[:product][:image_base64].present?
-        @product.status = false
+        if @product.changed == ["available_quantity"]
+          new_product = ShopifyAPI::Product.find @product.shopify_product_id rescue nil
+          if new_product
+            new_product.variants[0].sku = @product.available_quantity
+            new_product.save!
+          end
+        elsif @product.changed == []
+        else
+          @product.status = false
+        end
         @product.save
+
         @product.product_collections.destroy_all
         params[:product][:collection].reject(&:empty?).each do |collection_id|
           ProductCollection.create(product_id: @product.id, collection_id: collection_id)
         end
+        
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -94,6 +105,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:user_id, :name, :description, :ingredients, :image, :available_quantity, :amount, :price, :weight, :size, :status, :online)
+      params.require(:product).permit(:user_id, :name, :description, :ingredients, :available_quantity, :amount, :price, :weight)
     end
 end
