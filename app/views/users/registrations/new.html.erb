@@ -95,21 +95,12 @@
     </div>
     
     <div class="field">
-      <label for="user_collection">Tipo de cocina que sueles cocinar</label>
-      <input name="user[collection][]" type="hidden" value="">
-      <select class="inputdata" multiple="multiple" name="user[collection][]" id="user_collection" size="7">
-        <option>Andaluza</option>
-        <option>Andina</option>
-        <option>Asiática</option>
-        <option>Argentina</option>
-        <option>Cuchara</option>
-        <option>De temporada</option>
-        <option>Española</option>
-        <option>Francesa</option>
-        <option>Italiana</option>
-        <option>Mexicana</option>
-        <option>Japonesa</option>
-      </select>
+      <%= f.label :collection, "Tipo de cocina que sueles cocinar" %>
+      <% if user_signed_in? %>
+        <%= f.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: current_user.user_collections.map(&:collection_id)}, {multiple: true, class: 'inputdata', size: 7} %>
+      <% else %>
+        <%= f.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: []}, {multiple: true, class: 'inputdata', size: 7} %>
+      <% end %>
     </div>
       
     <hr>

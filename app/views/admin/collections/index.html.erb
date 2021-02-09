@@ -1,9 +1,11 @@
 <div class="row">
+  <%= link_to "Create New Collection", new_admin_collection_path %><br><br>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Title</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -11,6 +13,11 @@
         <tr>
           <td><%= collection.id %></td>
           <td><%= collection.title %></td>
+          <td>
+            <%= link_to "View", admin_collection_path(collection.id) %> |
+            <%= link_to "Edit", edit_admin_collection_path(collection.id) %> |
+            <%= link_to 'Destroy', admin_collection_path(collection.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>

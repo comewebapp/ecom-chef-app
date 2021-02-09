@@ -1,7 +1,7 @@
 <section class="content-wrapper profile">
 	
 	<h1 class="single-product-title">
-		$name + $lastname
+		<%= current_user.name %> <%= current_user.lastname %>
 	</h1>
 	
 	<p><%= current_user.vendor %></p>
@@ -41,8 +41,8 @@
 	<hr>
 	
 	<!-- <p>$user_collections (Example Kapil: Asiática, Italiana, Japonesa)</p> -->
-	<p></p>
+	<p><%= current_user.collections.map(&:title).join(", ") %></p>
 
 	<hr>
-	<a class="single-button" href="/user/edit">Editar datos personales</a>
+	<a class="single-button" href="/users/edit">Editar datos personales</a>
 </section>

@@ -1,43 +1,123 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="content-wrapper registerform">
+    
+  <h1>Formulario de registro</h1> 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= render "users/shared/error_messages", resource: resource %>
+    
+    <h2>Datos Personales</h2>
+  
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>   
+    
+    <div class="field">
+      <%= f.label :vendor, "Nombre como Chef" %>
+      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. Casa de Miguel", maxlength: 23, required: true %>
+      <span>Límite 15 caracteres</span>
+    </div>      
+    
+    <div class="field">
+      <%= f.label :name, "Nombre" %>
+      <%= f.text_field :name, class: "inputdata", placeholder: "Ej. Miguel", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :lastname, "Apellidos" %>
+      <%= f.text_field :lastname, class: "inputdata", placeholder: "Ej. Martínez Mellado", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "inputdata", required: true, autocomplete: "email" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :password, "Contraseña" %>
+      <%= f.password_field :password, class: "inputdata", required: true, autocomplete: "new-password" %>
+      <span>Límite 15 caracteres y pon algún número y símbolo</span>
+    </div>
+    
+    <div class="field">
+      <%= f.label :password_confirmation, "Repetir contraseña" %>
+      <%= f.password_field :password_confirmation, class: "inputdata", required: true, autocomplete: "new-password" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="field">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, class: "inputdata", required: true %>
+      <span>we need your current password to confirm your changes</span>
+    </div>
+    
+    <div class="field">
+      <%= f.label :contact, "Teléfono" %>
+      <%= f.telephone_field :contact, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :address, "Dirección" %>
+      <%= f.text_field :address, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field halfcol">
+      <%= f.label :postalcode, "Código postal" %>
+      <%= f.number_field :postalcode, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :city, "Ciudad" %>
+      <%= f.text_field :city, class: "inputdata", required: true %>
+    </div>
+    
+    <hr>
+    
+    <h2>Datos Bancarios</h2>
+  
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p> 
+    
+    <div class="field">
+      <%= f.label :bankaccount, "Número de cuenta" %>
+      <%= f.text_field :bankaccount, class: "inputdata", required: true, placeholder: "Ej. ES21 2100 0000 0000 0000 0000", maxlength: 29 %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :bankname, "Nombre del banco" %>
+      <%= f.text_field :bankname, class: "inputdata", required: true, placeholder: "Ej. La Caixa" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :bankowner, "Nombre del titular" %>
+      <%= f.text_field :bankowner, class: "inputdata", required: true, placeholder: "Ej. Miguel Martínez Mellado" %>
+    </div>
+    
+    <hr>
+    
+    <h2>Datos de Cocina</h2>
+    
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p> 
+    
+    <div class="field">
+      <%= f.label :carnet, "Nº de certificado del carnet de manipulador de alimentos e higiene alimentaria" %>
+      <%= f.number_field :carnet, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :collection, "Tipo de cocina que sueles cocinar" %>
+      <% if user_signed_in? %>
+        <%= f.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: current_user.user_collections.map(&:collection_id)}, {multiple: true, class: 'inputdata', size: 7} %>
+      <% else %>
+        <%= f.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: []}, {multiple: true, class: 'inputdata', size: 7} %>
+      <% end %>
+    </div>
+      
+    <hr>
+    
+    <div class="submitArea">
+      <div class="submitPrivacy">
+        <input type="checkbox" value="0" id="customer_privacy" name="customer_privacy" autocomplete="off" required="">
+        <label for="customer_privacy">Acepto la Política de Privacidad</label>
+      </div>
+      <%= f.submit "Registrarme", class: "submitProduct" %>
+    </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  
+</section>

@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :products, dependent: :destroy
+
+  has_many :user_collections
+  has_many :collections, :through => :user_collections#, :source => 'Collection'
 
   def is_admin?
     self.role.try(:downcase) === 'admin'

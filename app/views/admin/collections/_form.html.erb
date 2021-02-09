@@ -1,0 +1,9 @@
+<%= form_with(model:[:admin, collection],local:true) do |form| %>
+  <div class="form-group">
+    <%= form.label :title, for: "title" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Enter Collection Title", id: "title" %>
+  </div>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>
+
+
