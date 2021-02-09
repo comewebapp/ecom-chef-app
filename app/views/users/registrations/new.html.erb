@@ -12,7 +12,7 @@
     
     <div class="field">
       <%= f.label :vendor, "Nombre como Chef" %>
-      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. Casa de Miguel", maxlength: 23, required: true %>
+      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. Casa de Miguel", maxlength: 23, required: true, value: "Casa de " %>
       <span>Límite 15 caracteres</span>
     </div>      
     
@@ -115,3 +115,41 @@
   <% end %>
   
 </section>
+
+
+
+
+<!-- <script type="text/javascript">
+  $("select").mousedown(function(e){
+  
+    e.preventDefault();
+    
+    var select = this;
+    var scroll = select.scrollTop;
+    
+    e.target.selected = !e.target.selected;
+    
+    setTimeout(function(){select.scrollTop = scroll;}, 0);
+    
+    $(select).focus();
+    
+  }).mousemove(function(e){e.preventDefault()});
+</script>
+ -->
+<script>
+  
+  $('#user_vendor').keyup(function(e) {
+    if (this.value.length < 8) {
+      this.value = 'Casa de ';
+    } else if (this.value.indexOf('Casa de ') !== 0) {
+      this.value = 'Casa de ' + String.fromCharCode(e.which);
+    }
+  });
+  
+  $('#user_bankaccount').on('keypress change', function () {
+    $(this).val(function (index, value) {
+      return value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
+    });
+  });
+      
+</script>
