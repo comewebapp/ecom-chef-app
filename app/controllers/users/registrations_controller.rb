@@ -7,8 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
-    params[:user][:collection].reject(&:empty?).each do |collection_id|
-      UserCollection.create(user_id: current_user.id, collection_id: collection_id)
+    if current_user
+      params[:user][:collection].reject(&:empty?).each do |collection_id|
+        UserCollection.create(user_id: current_user.id, collection_id: collection_id)
+      end
     end
   end
 
