@@ -1027,6 +1027,22 @@ p.smalltext {
   padding: 14px;
 }
 
+#error_explanation {
+  border: 1px solid #b92525;
+  padding: 20px;
+  color: #b92525;
+  background: #ffe8e7;
+}
+
+.field_with_errors {
+  width: 100%;
+  display: flex;
+}
+
+.field_with_errors .inputdata {
+  border-color: #b92525;
+}
+
 
 @media (max-width: 767px) {
   .registerform {
