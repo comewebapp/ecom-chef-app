@@ -33,18 +33,18 @@
     
     <div class="field">
       <%= f.label :password, "Contraseña" %>
-      <%= f.password_field :password, class: "inputdata", required: true, autocomplete: "new-password" %>
+      <%= f.password_field :password, class: "inputdata", required: true, autocomplete: "new-password", maxlength: 15 %>
       <span>Límite 15 caracteres y pon algún número y símbolo</span>
     </div>
     
     <div class="field">
       <%= f.label :password_confirmation, "Repetir contraseña" %>
-      <%= f.password_field :password_confirmation, class: "inputdata", required: true, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, class: "inputdata", required: true, autocomplete: "new-password", maxlength: 15 %>
     </div>
 
     <div class="field">
       <%= f.label :current_password %>
-      <%= f.password_field :current_password, class: "inputdata", required: true %>
+      <%= f.password_field :current_password, class: "inputdata", required: true, maxlength: 15 %>
       <span>we need your current password to confirm your changes</span>
     </div>
     
