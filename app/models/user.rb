@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :user_collections
   has_many :collections, :through => :user_collections#, :source => 'Collection'
 
+  has_many :products
+
   def is_admin?
     self.role.try(:downcase) === 'admin'
   end
