@@ -1,29 +1,126 @@
-<h2>Register</h2>
+<section class="content-wrapper registerform">
+    
+  <h1>Formulario de registro</h1> 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+    <%= render "users/shared/error_messages", resource: resource %>
+    
+    <h2>Datos Personales</h2>
+  
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>   
+    
+    <div class="field">
+      <%= f.label :vendor, "Nombre como Chef" %>
+      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. Casa de Miguel", maxlength: 23, required: true %>
+      <span>Límite 15 caracteres</span>
+    </div>      
+    
+    <div class="field">
+      <%= f.label :name, "Nombre" %>
+      <%= f.text_field :name, class: "inputdata", placeholder: "Ej. Miguel", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :lastname, "Apellidos" %>
+      <%= f.text_field :lastname, class: "inputdata", placeholder: "Ej. Martínez Mellado", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "inputdata", required: true, autocomplete: "email" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :password, "Contraseña" %>
+      <%= f.password_field :password, class: "inputdata", required: true, autocomplete: "new-password" %>
+      <span>Límite 15 caracteres y pon algún número y símbolo</span>
+    </div>
+    
+    <div class="field">
+      <%= f.label :password_confirmation, "Repetir contraseña" %>
+      <%= f.password_field :password_confirmation, class: "inputdata", required: true, autocomplete: "new-password" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :contact, "Teléfono" %>
+      <%= f.telephone_field :contact, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :address, "Dirección" %>
+      <%= f.text_field :address, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field halfcol">
+      <%= f.label :postalcode, "Código postal" %>
+      <%= f.number_field :postalcode, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :city, "Ciudad" %>
+      <%= f.text_field :city, class: "inputdata", required: true %>
+    </div>
+    
+    <hr>
+    
+    <h2>Datos Bancarios</h2>
+  
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p> 
+    
+    <div class="field">
+      <%= f.label :bankaccount, "Número de cuenta" %>
+      <%= f.text_field :bankaccount, class: "inputdata", required: true, placeholder: "Ej. ES21 2100 0000 0000 0000 0000", maxlength: 29 %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :bankname, "Nombre del banco" %>
+      <%= f.text_field :bankname, class: "inputdata", required: true, placeholder: "Ej. La Caixa" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :bankowner, "Nombre del titular" %>
+      <%= f.text_field :bankowner, class: "inputdata", required: true, placeholder: "Ej. Miguel Martínez Mellado" %>
+    </div>
+    
+    <hr>
+    
+    <h2>Datos de Cocina</h2>
+    
+    <p class="smalltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p> 
+    
+    <div class="field">
+      <%= f.label :carnet, "Nº de certificado del carnet de manipulador de alimentos e higiene alimentaria" %>
+      <%= f.number_field :carnet, class: "inputdata", required: true %>
+    </div>
+    
+    <div class="field">
+      <label for="user_collection">Tipo de cocina que sueles cocinar</label>
+      <input name="user[collection][]" type="hidden" value="">
+      <select class="inputdata" multiple="multiple" name="user[collection][]" id="user_collection" size="7">
+        <option>Andaluza</option>
+        <option>Andina</option>
+        <option>Asiática</option>
+        <option>Argentina</option>
+        <option>Cuchara</option>
+        <option>De temporada</option>
+        <option>Española</option>
+        <option>Francesa</option>
+        <option>Italiana</option>
+        <option>Mexicana</option>
+        <option>Japonesa</option>
+      </select>
+    </div>
+      
+    <hr>
+    
+    <div class="submitArea">
+      <div class="submitPrivacy">
+        <input type="checkbox" value="0" id="customer_privacy" name="customer_privacy" autocomplete="off" required="">
+        <label for="customer_privacy">Acepto la Política de Privacidad</label>
+      </div>
+      <%= f.submit "Registrarme", class: "submitProduct" %>
+    </div>
+  <% end %>
+  
+</section>

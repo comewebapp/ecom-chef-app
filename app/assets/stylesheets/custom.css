@@ -179,7 +179,7 @@ header {
     margin: 0;   
 }
 
-.field p.smalltext {
+p.smalltext {
     color: #999;
     font-family: Arial;
     font-size: 12px;   
@@ -197,7 +197,7 @@ header {
   width: 65%;
 }
 
-.field .col-right .inputdata {
+.field .inputdata {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -683,7 +683,7 @@ header {
     line-height: 18px;
 }
 
-.field .col-right .inputdata::placeholder {
+.field .inputdata::placeholder {
   color: #ccc;
 }
 
@@ -862,6 +862,10 @@ header {
 
 }
 
+.single {
+  padding-right: 10%;
+}
+
 .single .single-product-title {
     border-bottom: 2px solid;
     padding-bottom: 10px;
@@ -905,3 +909,183 @@ header {
 
 
 
+.registerform {
+  padding-right: 20%;
+  margin-top: 40px;
+}
+
+.registerform h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+    font-size: 20px;
+    margin-bottom: 40px; 
+}
+
+.registerform form h2 {
+  margin-top: 20px; 
+  font-size: 22px;
+}
+
+.registerform form .field {
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+
+.registerform form .field span {
+    font-family: Arial;
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+}
+
+.registerform form label {
+  font-family: Arial;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.registerform form .inputdata::placeholder {
+  color: #ccc;
+}
+
+.registerform form .halfcol {
+    width: 48%;
+    float: left;
+    margin-right: 2%;
+    margin-top: 0;
+}
+
+.registerform form .input-prefix {
+  padding: 6px 12px;
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    border: 1px solid #ccc;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    border-right: 0; 
+}
+
+.registerform form select.inputdata {
+    width: 100%;
+}
+
+.registerform form select.inputdata::-webkit-scrollbar {
+    width: 7px;
+}
+
+.registerform form select.inputdata::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.registerform form select option {
+    padding: 5px;
+    margin: 2px 0;
+    cursor: pointer;
+}
+
+.registerform form select option:hover {
+    background-color: #f6f6f6;
+}
+
+.registerform form select.inputdata option:checked {
+/*  background: linear-gradient(0deg, #c6f1cf 0%, #c6f1cf 100%); */
+    background: linear-gradient(0deg, #a1ca9e 0%, #a1ca9e 100%);
+
+}
+
+.registerform hr {
+  margin: 70px 0;
+}
+
+.registerform .submitArea {
+  float: right;
+  width: 50%;
+}
+
+.registerform .submitPrivacy {
+  margin-bottom: 20px;
+}
+
+.registerform .submitPrivacy input {
+    vertical-align: text-bottom;
+}
+
+.registerform .submitPrivacy label {
+  color: #999;
+  font-size: 12px;  
+}
+
+.registerform .submitProduct {
+  width: 100%;
+  padding: 14px;
+}
+
+
+@media (max-width: 767px) {
+  .registerform {
+    padding-right: 0;
+  }
+    
+  .registerform .submitArea {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.profile {
+  padding-right: 20%;
+}
+
+.profile hr {
+  margin: 0 0 20px;
+    border-color: #eee;
+}
+
+.profile .single-product-title {
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.profile h2 {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.profile p {
+  color: #999;
+    font-family: Arial;
+    font-size: 14px; 
+}
+
+.profile .single-button {
+  border: 1px solid #000;
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 20px 10px 20px 0;
+    text-decoration: none;
+}
+
+.profile .single-button:hover {
+  color: #fff;  
+  background: #000;
+}
+
+@media (max-width: 767px) {
+  .profile {
+    padding-right: 0;
+  }
+}

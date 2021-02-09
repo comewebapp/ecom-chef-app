@@ -1,21 +1,48 @@
-<p id="notice"><%= notice %></p>
+<section class="content-wrapper profile">
+	
+	<h1 class="single-product-title">
+		$name + $lastname
+	</h1>
+	
+	<p><%= current_user.vendor %></p>
+	
+	<hr>
+	
+	<p><%= current_user.email %></p>
+	
+	<hr>
+	
+	<p><%= current_user.contact %></p>
+	
+	<hr>
+	
+	<p><%= current_user.address %>, <%= current_user.postalcode %>, <%= current_user.city %></p>
+	
+	<hr>
+	
+	<h2>
+		Datos Bancarios
+	</h2>
+	
+	<p><%= current_user.bankname %></p>
+	
+	<hr>
+	
+	<p><%= current_user.bankaccount %></p>
+	
+	<hr>
+	
+	<h2>
+		Datos Cocina
+	</h2>
+	
+	<p><%= current_user.carnet %></p>
+	
+	<hr>
+	
+	<!-- <p>$user_collections (Example Kapil: Asiática, Italiana, Japonesa)</p> -->
+	<p></p>
 
-<p>
-  <strong>First Name:</strong>
-  <%= current_user.first_name %>
-</p>
-
-<p>
-  <strong>Last Name:</strong>
-  <%= current_user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= current_user.email %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= current_user.contact %>
-</p>
+	<hr>
+	<a class="single-button" href="/user/edit">Editar datos personales</a>
+</section>
