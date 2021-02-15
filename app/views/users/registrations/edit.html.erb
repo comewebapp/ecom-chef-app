@@ -32,20 +32,20 @@
     </div>
     
     <div class="field">
-      <%= f.label :password, "Contraseña" %>
+      <%= f.label :password, "Nueva contraseña" %>
       <%= f.password_field :password, class: "inputdata", required: true, autocomplete: "new-password", maxlength: 15 %>
       <span>Límite 15 caracteres y pon algún número y símbolo</span>
     </div>
     
     <div class="field">
-      <%= f.label :password_confirmation, "Repetir contraseña" %>
+      <%= f.label :password_confirmation, "Repetir nueva contraseña" %>
       <%= f.password_field :password_confirmation, class: "inputdata", required: true, autocomplete: "new-password", maxlength: 15 %>
     </div>
 
     <div class="field">
-      <%= f.label :current_password %>
+      <%= f.label :current_password, "Contraseña actual" %>
       <%= f.password_field :current_password, class: "inputdata", required: true, maxlength: 15 %>
-      <span>we need your current password to confirm your changes</span>
+      <span>Necesitamos tu contraseña actual para confirmar tus cambios</span>
     </div>
     
     <div class="field">
@@ -116,7 +116,7 @@
         <input type="checkbox" value="0" id="customer_privacy" name="customer_privacy" autocomplete="off" required="">
         <label for="customer_privacy">Acepto la Política de Privacidad</label>
       </div>
-      <%= f.submit "Registrarme", class: "submitProduct" %>
+      <%= f.submit "Guardar", class: "submitProduct" %>
     </div>
   <% end %>
   
