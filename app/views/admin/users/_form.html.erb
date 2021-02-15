@@ -1,0 +1,77 @@
+<%= form_with(model:[:admin, user],local:true) do |form| %>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message|%>
+    <h3 class="text-danger"><%= message %> </h3>
+    <%end%>
+  <%end%>
+
+  <div class="form-group">
+    <%= form.label :vendor %>
+    <%= form.text_field :vendor, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.text_field :password, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :contact %>
+    <%= form.text_field :contact, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :postalcode %>
+    <%= form.text_field :postalcode, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bankaccount %>
+    <%= form.text_field :bankaccount, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bankname %>
+    <%= form.text_field :bankname, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bankowner %>
+    <%= form.text_field :bankowner, class: "form-control", required: true %>
+  </div>
+  
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>
+
+
