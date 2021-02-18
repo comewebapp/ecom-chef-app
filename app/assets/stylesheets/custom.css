@@ -1105,3 +1105,14 @@ p.smalltext {
     padding-right: 0;
   }
 }
+
+.lost-password {
+  margin-top: 10px;
+}
+
+.lost-password a{
+  color: #666;
+  font-family: Arial;
+  font-size: 12px;
+  text-decoration: none;
+}
