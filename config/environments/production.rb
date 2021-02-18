@@ -89,6 +89,22 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { :host => ENV['HOST'] }
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => ENV['DOMAIN'],
+    :user_name => ENV['SMTP_USERNAME'],
+    :password => ENV['SMTP_PASSWORD'],
+    authentication: :plain,
+    # ssl:            true,
+    tls:            false,
+    enable_starttls_auto: true
+  }
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write

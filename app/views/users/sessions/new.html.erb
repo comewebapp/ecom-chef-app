@@ -11,6 +11,9 @@
       <div class="field">
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control inputdata", placeholder: "Password", required: true %>
       </div>
+      <div class="field">
+        <%= link_to "¿Has olvidado la contraseña?", new_password_path(resource_name) %>
+      </div>
       <div class="actions">
         <%= f.submit "Iniciar cuenta", class: "submit-dark" %>
       </div>
