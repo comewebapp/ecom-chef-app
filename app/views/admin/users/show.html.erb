@@ -37,6 +37,9 @@
 
         <div class="col-md-6">Bank Owner</div>
         <div class="col-md-6"><%= @user.bankowner %></div>
+
+        <div class="col-md-6">Collections</div>
+        <div class="col-md-6"><%= @user.collections.map(&:title).join(", ") %></div>
       </div>
     </div>
   </div>
