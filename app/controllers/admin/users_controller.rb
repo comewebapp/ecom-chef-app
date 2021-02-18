@@ -20,6 +20,9 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        params[:user][:collection].reject(&:empty?).each do |collection_id|
+          UserCollection.create(user_id: @user.id, collection_id: collection_id)
+        end
         format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -32,6 +35,10 @@ class Admin::UsersController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @user.user_collections.destroy_all
+        params[:user][:collection].reject(&:empty?).each do |collection_id|
+          UserCollection.create(user_id: @user.id, collection_id: collection_id)
+        end
         format.html { redirect_to admin_users_url, notice: 'user was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

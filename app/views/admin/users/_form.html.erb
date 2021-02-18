@@ -70,6 +70,11 @@
     <%= form.label :bankowner %>
     <%= form.text_field :bankowner, class: "form-control", required: true %>
   </div>
+
+  <div class="form-group">
+    <%= form.label :collection %>
+    <%= form.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: @user.user_collections.map(&:collection_id)}, {multiple: true, class: 'form-control', size: 7} %>
+  </div>
   
   <%= form.submit class: "btn btn-primary" %>
 <% end %>
