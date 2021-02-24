@@ -22,6 +22,10 @@ Rails.application.routes.draw do
       end
     end
     resources :collections
-    resources :settings
+    resources :settings, only: [:index, :create, :update] do
+      collection do
+        post :reset_stock
+      end
+    end
   end
 end

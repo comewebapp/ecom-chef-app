@@ -21,6 +21,10 @@ class Admin::SettingsController < Admin::ApplicationController
     end
   end
 
+  def reset_stock
+    redirect_to admin_settings_path
+  end
+
   private
 
   def set_setting
