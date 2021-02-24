@@ -1,0 +1,178 @@
+a {
+    color: #000;
+}
+
+a:hover {
+    color: #666;
+}
+
+label {
+    display: block;
+}
+
+hr {
+    border-color: #000;
+    margin: 60px 0;
+}
+
+.navbar-brand {
+    height: inherit;
+    padding: 25px 15px;
+    margin-left: 0!important;
+}
+
+.navbar-brand>img {
+    display: block;
+    width: 80%;
+}
+
+.nav {
+    margin-bottom: 20px;
+}
+
+.nav>li {
+	display: inline-block;
+} 
+
+.nav>li>a {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    
+}
+
+.nav-pills>li.active>a, 
+.nav-pills>li.active>a:hover, 
+.nav-pills>li.active>a:focus {
+    color: initial;
+    background-color: initial;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.nav>li>a:hover, 
+.nav>li>a:focus {
+    background-color: inherit;
+}
+
+.panel {
+	display: inline-block;
+	min-width: 100%;
+}
+
+@media (min-width: 992px) {
+	
+	.nav>li {
+		display: block;
+	} 
+	 	
+}		
+
+
+
+/* Tables */
+
+.table { margin-bottom: 0;}
+
+.table>thead>tr>th, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>td, 
+.table>tfoot>tr>td {
+    padding: 10px;
+    line-height: 1.4;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.table>thead>tr>th {
+    vertical-align: center;
+    border-bottom: 2px solid #000;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.table img {
+    max-width: 40px;
+}
+
+/* Admin products */
+
+.adminProductsTable thead tr th:nth-child(1) { width: 10%; text-align: center; }
+.adminProductsTable thead tr th:nth-child(2) { width: 25%; }
+.adminProductsTable thead tr th:nth-child(3) { width: 10%; }
+.adminProductsTable thead tr th:nth-child(4) { width: 5%; text-align: center; }
+.adminProductsTable thead tr th:nth-child(5) { width: 15%; text-align: center; }
+.adminProductsTable thead tr th:nth-child(6) { width: 15%; text-align: center; }
+.adminProductsTable thead tr th:nth-child(7) { width: 20%; text-align: center; }
+
+.adminUsersTable thead tr th:nth-child(1) { width: 20%; }
+.adminUsersTable thead tr th:nth-child(2) { width: 20%; }
+.adminUsersTable thead tr th:nth-child(3) { width: 25%; }
+.adminUsersTable thead tr th:nth-child(4) { width: 35%; text-align: center; }
+
+.adminColecctionsTable thead tr th:nth-child(1) { width: 50%; }
+.adminColecctionsTable thead tr th:nth-child(2) { width: 50%; text-align: center; }
+
+.pendingRow { color: #999; }
+
+.a_image { text-align: center; }
+.a_stock { text-align: center; }
+.a_status { text-align: center; }
+.a_approve { text-align: center; }
+.a_actions { text-align: center; }
+	
+.a_approve a {
+	border: 1px solid #000;
+    padding: 4px 5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    text-decoration: none;
+    display: block;
+}
+
+.a_approve a:hover {
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+.a_actions a {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.adminButton {
+	border: 2px solid #000;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    color: #000;
+}
+
+.adminButton:hover {
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+.form-group {
+    max-width: 360px;
+}
+
+/*
+.adminBack {
+	text-align: center;
+	display: block;
+}
+*/

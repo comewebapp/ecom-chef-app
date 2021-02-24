@@ -1,39 +1,38 @@
-<div class="row">
-  <%= link_to "Create New Product", new_admin_product_path %><br><br>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Image</th>
-        <th>Chef</th>
-        <th>Title</th>
-        <th>Stock</th>
-        <th>Price</th>
-        <th>Weight</th>
-        <th>Status</th>
-        <th>Mark as Approved</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <th><%= product.id %></th>
-          <td><%= image_tag product.image_base64, width: 100 if product.image_base64.present? %></td>
-          <td><%= product.user.try(:email) %></td>
-          <td><%= product.name %></td>
-          <td><%= product.available_quantity %></td>
-          <td><%= product.price %></td>
-          <td><%= product.weight %></td>
-          <td><%= product.status_name %></td>
-          <td><%= link_to "Mark as Approved", approve_admin_product_path(product.id), method: :put, data: { confirm: 'Are you sure?' } if product.is_pending?  %></td>
-          <td>
-            <%= link_to "View", admin_product_path(product.id) %> |
-            <%= link_to "Edit", edit_admin_product_path(product.id) %> |
-            <%= link_to 'Destroy', admin_product_path(product.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="panel panel-default">
+  <div class="panel-body panel-content">
+    <div class="row">
+      <table class="table adminProductsTable">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Plato</th>
+            <th>Casa</th>
+            <th>Uds.</th>
+            <th>Estado</th>
+            <th>Aprobar</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr class="<% if product.is_pending? %>pendingRow<% end %>">
+              <td class="a_image"><%= image_tag product.image_base64 if product.image_base64.present? %></td>
+              <td><%= product.name %></td>
+              <td><%= product.user.vendor %></td>
+              <td class="a_stock"><%= product.available_quantity %></td>
+              <td class="a_status"><%= product.status_name_spanish_abbr_title %></td>
+              <td class="a_approve">
+                <%= link_to "Aprobar plato", approve_admin_product_path(product.id), method: :put, data: { confirm: '¿Estás seguro que quieres eliminar el plato?' } if product.is_pending? %>
+              </td>
+              <td class="a_actions">
+                <%= link_to "Ver", admin_product_path(product.id) %> |
+                <%= link_to "Editar", edit_admin_product_path(product.id) %> |
+                <%= link_to 'Eliminar', admin_product_path(product.id), method: :delete, data: { confirm: '¿Estás seguro que quieres eliminar el plato?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
