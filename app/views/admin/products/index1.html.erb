@@ -1,0 +1,39 @@
+<div class="row">
+  <%= link_to "Create New Product", new_admin_product_path %><br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Chef</th>
+        <th>Title</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Weight</th>
+        <th>Status</th>
+        <th>Mark as Approved</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <th><%= product.id %></th>
+          <td><%= image_tag product.image_base64, width: 100 if product.image_base64.present? %></td>
+          <td><%= product.user.try(:email) %></td>
+          <td><%= product.name %></td>
+          <td><%= product.available_quantity %></td>
+          <td><%= product.price %></td>
+          <td><%= product.weight %></td>
+          <td><%= product.status_name %></td>
+          <td><%= link_to "Mark as Approved", approve_admin_product_path(product.id), method: :put, data: { confirm: 'Are you sure?' } if product.is_pending?  %></td>
+          <td>
+            <%= link_to "View", admin_product_path(product.id) %> |
+            <%= link_to "Edit", edit_admin_product_path(product.id) %> |
+            <%= link_to 'Destroy', admin_product_path(product.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

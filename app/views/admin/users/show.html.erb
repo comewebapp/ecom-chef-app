@@ -1,46 +1,72 @@
-<div class="row">
-  <div class="co-md-12">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-6">Id</div>
-        <div class="col-md-6"><%= @user.id %></div>
-
-        <div class="col-md-6">Vendor</div>
-        <div class="col-md-6"><%= @user.vendor %></div>
-
-        <div class="col-md-6">First Name</div>
-        <div class="col-md-6"><%= @user.name %></div>
-
-        <div class="col-md-6">Last Name</div>
-        <div class="col-md-6"><%= @user.lastname %></div>
-
-        <div class="col-md-6">Email</div>
-        <div class="col-md-6"><%= @user.email %></div>
-
-        <div class="col-md-6">Telephone</div>
-        <div class="col-md-6"><%= @user.contact %></div>
-
-        <div class="col-md-6">Address</div>
-        <div class="col-md-6"><%= @user.address %></div>
-
-        <div class="col-md-6">Postal Code</div>
-        <div class="col-md-6"><%= @user.postalcode %></div>
-
-        <div class="col-md-6">City</div>
-        <div class="col-md-6"><%= @user.city %></div>
-
-        <div class="col-md-6">Bank Account</div>
-        <div class="col-md-6"><%= @user.bankaccount %></div>
-
-        <div class="col-md-6">Bank Name</div>
-        <div class="col-md-6"><%= @user.bankname %></div>
-
-        <div class="col-md-6">Bank Owner</div>
-        <div class="col-md-6"><%= @user.bankowner %></div>
-
-        <div class="col-md-6">Collections</div>
-        <div class="col-md-6"><%= @user.collections.map(&:title).join(", ") %></div>
-      </div>
+<div class="panel panel-default">
+  <div class="panel-body panel-content">
+    <div class="row">
+      <table class="table adminSingleTable">
+        <thead>
+          <tr>
+            <th colspan="2"><%= @user.vendor %></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Id</td>
+              <td><%= @user.id %></td>
+            </tr>
+            <tr>
+              <td>Nombre</td>
+              <td><%= @user.name %></td>
+            </tr>
+            
+            <tr>
+              <td>Apellidos</td>
+              <td><%= @user.lastname %></td>
+            </tr>
+            
+            <tr>
+              <td>Email</td>
+              <td><%= @user.email %></td>
+            </tr>
+            
+            <tr>
+              <td>Teléfono</td>
+              <td><%= @user.contact %></td>
+            </tr>
+            <tr>
+              <td>Dirección</td>
+              <td><%= @user.address %></td>
+            </tr>
+            <tr>
+              <td>Código postal</td>
+              <td><%= @user.postalcode %></td>
+            </tr>
+            <tr>
+              <td>Ciudad</td>
+              <td><%= @user.city %></td>
+            </tr>
+            <tr>
+              <td>Número de cuenta</td>
+              <td><%= @user.bankaccount %></td>
+            </tr>
+            <tr>
+              <td>Nombre del banco</td>
+              <td><%= @user.bankname %></td>
+            </tr>
+            <tr>
+              <td>Nombre del titular</td>
+              <td><%= @user.bankowner %></td>
+            </tr>
+            <tr>
+              <td>Nº certificado</td>
+              <td><%= @user.carnet %></td>
+            </tr>
+            <tr>
+              <td>Colecciones</td>
+              <td><%= @user.collections.map(&:title).join(", ") %></td>
+            </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <%= link_to '« Volver atrás', admin_users_path, class: "adminBack" %>
     </div>
   </div>
 </div>
