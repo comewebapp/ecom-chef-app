@@ -6,7 +6,7 @@
           <tr>
             <th>Imagen</th>
             <th>Plato</th>
-            <th>Casa</th>
+            <th>La Casa de</th>
             <th>Uds.</th>
             <th>Estado</th>
             <th>Aprobar</th>
@@ -18,11 +18,11 @@
             <tr class="<% if product.is_pending? %>pendingRow<% end %>">
               <td class="a_image"><%= image_tag product.image_base64 if product.image_base64.present? %></td>
               <td><%= product.name %></td>
-              <td><%= product.user.vendor %></td>
+              <td><%= product.user.vendor.gsub("La Casa de", "") if product.user.vendor.present? %></td>
               <td class="a_stock"><%= product.available_quantity %></td>
               <td class="a_status"><%= product.status_name_spanish_abbr_title %></td>
               <td class="a_approve">
-                <%= link_to "Aprobar plato", approve_admin_product_path(product.id), method: :put, data: { confirm: '¿Estás seguro que quieres eliminar el plato?' } if product.is_pending? %>
+                <%= link_to "Aprobar plato", approve_admin_product_path(product.id), method: :put, data: { confirm: '¿Quieres aprobar el plato?' } if product.is_pending? %>
               </td>
               <td class="a_actions">
                 <%= link_to "Ver", admin_product_path(product.id) %> |

@@ -1,14 +1,22 @@
-<div class="row">
-  <div class="co-md-12">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-6">Id</div>
-        <div class="col-md-6"><%= @collection.id %></div>
-
-        <div class="col-md-6">Title</div>
-        <div class="col-md-6"><%= @collection.title %></div>
-
-      </div>
+<div class="panel panel-default">
+  <div class="panel-body panel-content">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= @collection.title %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @collection.users.each do |user| %>
+            <tr>
+              <td><%= user.vendor %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br><br>
+      <%= link_to '« Volver atrás', admin_collections_path, class: "adminBack" %>
     </div>
   </div>
 </div>

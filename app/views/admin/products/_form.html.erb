@@ -1,37 +1,45 @@
 <%= form_with(model:[:admin, product],local:true) do |form| %>
+
   <div class="form-group">
-    <%= form.label :name, for: "name" %>
-    <%= form.text_field :name, class: "form-control", placeholder: "Enter Product Name", id: "name" %>
+    <%= form.label :name, "Plato" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
+
   <div class="form-group">
-    <%= form.label :description, for: "description" %>
-    <%= form.text_area :description, class: "form-control", placeholder: "Enter Product Description", id: "description", rows: 8 %>
+    <%= form.label :description, "Descripción" %>
+    <%= form.text_area :description, class: "form-control", rows: 8 %>
   </div>
-  <!-- <div class="form-group">
-    <%= form.label :image, for: "image" %>
-    <%= form.file_field :image,  id: "image" %>
-  </div> -->
+
   <div class="form-group">
-    <%= form.label :stock, for: "stock" %>
-    <%= form.number_field :available_quantity, class: "form-control", placeholder: "Enter Product stock", id: "stock" %>
+    <%= form.label :ingredients, "Ingredientes" %>
+    <%= form.text_field :ingredients, class: "form-control" %>
   </div>
+  
   <div class="form-group">
-    <%= form.label :price, for: "price" %>
-    <%= form.text_field :price, class: "form-control", placeholder: "Enter Product price", id: "price" %>
+    <%= form.label :collection, "Tipo de cocina" %>
+    <%= form.select :collection, Collection.all.map{|c| [c.title, c.id]}, {selected: @product.product_collections.map(&:collection_id)}, {multiple: true, class: 'form-control', size: 7} %>
   </div>
-  <!-- <div class="form-group">
-    <%= form.label :size, for: "size" %>
-    <%= form.text_field :size, class: "form-control", placeholder: "Enter Product size", id: "size" %>
-  </div> -->
-  <!-- <div class="form-group">
-    <%= form.label :online, for: "online" %><br>
-    <%= form.check_box :online, id: "online", class: "form-control" %>
-  </div> -->
-  <!-- <div class="form-group">
-    <%= form.label :status, for: "status" %><br>
-    <%= form.check_box :status, id: "status", class: "form-control" %>
-  </div> -->
-  <%= form.submit class: "btn btn-primary" %>
+
+  <div class="form-group">
+    <%= form.label :available_quantity, "Unidades" %>
+    <%= form.number_field :available_quantity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight, "Peso" %>
+    <%= form.number_field :weight, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price, "Precio final" %>
+    <%= form.text_field :price, class: "form-control" %>
+
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image_base64, "Imagen" %>
+    <%= form.file_field :image_base64, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Editar plato", class: "adminButton" %>
 <% end %>
-
-

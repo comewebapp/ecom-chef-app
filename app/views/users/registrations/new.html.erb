@@ -12,7 +12,7 @@
     
     <div class="field">
       <%= f.label :vendor, "Nombre como Chef" %>
-      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. Casa de Miguel", maxlength: 23, required: true, value: "Casa de " %>
+      <%= f.text_field :vendor, class: "inputdata", placeholder: "Ej. La Casa de Miguel", maxlength: 26, required: true, value: "La Casa de " %>
       <span>Límite 15 caracteres</span>
     </div>      
     
@@ -139,10 +139,10 @@
 <script>
   
   $('#user_vendor').keyup(function(e) {
-    if (this.value.length < 8) {
-      this.value = 'Casa de ';
-    } else if (this.value.indexOf('Casa de ') !== 0) {
-      this.value = 'Casa de ' + String.fromCharCode(e.which);
+    if (this.value.length < 11) {
+      this.value = 'La Casa de ';
+    } else if (this.value.indexOf('La Casa de ') !== 0) {
+      this.value = 'La Casa de ' + String.fromCharCode(e.which);
     }
   });
   

@@ -22,7 +22,7 @@ class Product < ApplicationRecord
   end
 
   def status_name_spanish_abbr_title
-    self.status ? "Aprovado" : "Pendiente"
+    self.status ? "Aprobado" : "Pendiente"
   end
 
   def is_pending?

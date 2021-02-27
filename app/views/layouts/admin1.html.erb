@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EcommerceProducts</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    			<a class="navbar-brand" href="#">
+    				Admin
+    			</a>
+    		</div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+						<li class="nav-item">
+							<%= link_to :logout, destroy_user_session_path, method: :delete, class: 'nav-link' %>
+						</li>
+					</ul>
+        </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+    </nav>
+  	<div class="container-fluid main-container">
+  		<div class="col-md-2 sidebar">
+  			<ul class="nav nav-pills nav-stacked">
+  				<li class="<% if params[:controller]=='admin/dashboard' %>active<% end %>"><a href="/admin">Home</a></li>
+          <li class="<% if params[:controller]=='admin/users' %>active<% end %>"><a href="/admin/users">Users</a></li>
+  				<li class="<% if params[:controller]=='admin/products' %>active<% end %>"><a href="/admin/products">Products</a></li>
+  				<li class="<% if params[:controller]=='admin/collections' %>active<% end %>"><a href="/admin/collections">Collections</a></li>
+          <li class="<% if params[:controller]=='admin/settings' %>active<% end %>"><a href="/admin/settings">Settings</a></li>
+  			</ul>
+      </div>
+      <div class="col-md-10 content">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Dashboard
+          </div>
+          <div class="panel-body panel-content">
+            <%= yield %>
+          </div>
+        </div>
+  		</div>
+  	</div>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  </body>
+</html>
+
+<style>
+  h1.page-header {
+    margin-top: -5px;
+  }
+  .sidebar {
+    padding-left: 0;
+  }
+  .main-container { 
+    background: #FFF;
+    padding-top: 15px;
+    margin-top: -20px;
+  }
+  .footer {
+    width: 100%;
+  }
+  .panel-content {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+    padding-top: 30px !important;
+    padding-bootom: 30px !important;
+  }
+</style>

@@ -4,7 +4,7 @@
       <table class="table adminUsersTable">
         <thead>
           <tr>
-            <th>Casa</th>
+            <th>La Casa de</th>
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Acciones</th>
@@ -13,7 +13,7 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <th><%= user.vendor %></th>
+              <th><%= user.vendor.gsub("La Casa de", "") if user.vendor.present? %></th>
               <td><%= user.name %></td>
               <td><%= user.lastname %></td>
               <td class="a_actions">
