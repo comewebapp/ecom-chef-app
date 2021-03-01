@@ -394,7 +394,6 @@ p.smalltext {
 
 .photo-add {
   margin-top: 20px;
-  margin-bottom: 10px;
 }
 
 .photo-upload .photo-add label {
@@ -1019,7 +1018,8 @@ p.smalltext {
 
 .registerform .submitPrivacy label {
   color: #999;
-  font-size: 12px;  
+  font-size: 12px;
+  display: inline-block;
 }
 
 .registerform .submitProduct {

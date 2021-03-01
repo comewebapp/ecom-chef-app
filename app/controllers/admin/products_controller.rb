@@ -9,6 +9,12 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def update
     if @product.update(product_params)
+
+      @product.product_collections.destroy_all
+      params[:product][:collection].reject(&:empty?).each do |collection_id|
+        ProductCollection.create(product_id: @product.id, collection_id: collection_id)
+      end
+        
       redirect_to [:admin, @product], notice: 'Product was successfully update'
     else
       render :edit

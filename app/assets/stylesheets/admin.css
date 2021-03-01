@@ -103,11 +103,13 @@ hr {
     font-size: 12px;
     text-transform: uppercase;
 }
-
-.table img {
+.table .a_image img {
     max-width: 40px;
 }
 
+.table .p_image img {
+    max-width: 300px;
+}
 /* Admin products */
 
 .adminProductsTable thead tr th:nth-child(1) { width: 10%; text-align: center; }

@@ -2,10 +2,10 @@
   <div class="panel-body panel-content">
 		<%= form_with(model:[:admin, collection],local:true) do |form| %>
 		  <div class="form-group">
-		    <%= form.label :title, "Nombre de la nueva colección:" %>
+		    <%= form.label :title, "Nombre de la colección:" %>
 		    <%= form.text_field :title, class: "form-control", placeholder: "Ej. Asiática" %>
 		  </div>
-		  <%= form.submit "Guardar colección", class: "adminButton" %>
+		  <%= form.submit btn_text, class: "adminButton" %>
 		<% end %>
 		<br><br>
 		<%= link_to '« Volver atrás', admin_collections_path, class: "adminBack" %>
