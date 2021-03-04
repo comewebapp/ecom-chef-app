@@ -18,7 +18,7 @@
             <tr class="<% if product.is_pending? %>pendingRow<% end %>">
               <td class="a_image"><%= image_tag product.image_base64 if product.image_base64.present? %></td>
               <td><%= product.name %></td>
-              <td><%= product.user.vendor.gsub("La Casa de", "") if product.user.vendor.present? %></td>
+              <td><%= product.user.vendor.gsub("La Casa de", "") if product.user.present? && product.user.vendor.present? %></td>
               <td class="a_stock"><%= product.available_quantity %></td>
               <td class="a_status"><%= product.status_name_spanish_abbr_title %></td>
               <td class="a_approve">
