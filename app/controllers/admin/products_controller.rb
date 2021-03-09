@@ -41,6 +41,8 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def destroy
     @product = Product.find_by_id(params[:id])
+    shopify_product = ShopifyAPI::Product.find @product.shopify_product_id rescue nil
+    shopify_product.destroy if shopify_product
     @product.destroy
     redirect_back(fallback_location: root_path)
   end
