@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<section class="content-wrapper">
+  <table class="ordersTable">
+    <thead>
+      <tr>
+        <th><abbr title="Orden">Ord.</abbr></th>
+        <th>Fecha</th>
+        <th>Plato</th>
+        <th><abbr title="Unidades">Uds.</abbr></th>
+        <th><abbr title="Entrega">Ent.</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td class="stock"><%= order.name %></td>
+          <td class="stock"><%= order.created_at.to_datetime.strftime("%d/%m/%y") %> <br><%= order.created_at.to_datetime.to_datetime.strftime("%H:%M") %></td>
+          <td class="title"><%= order.line_items[0].name %></td>
+          <td class="stock"><%= order.line_items[0].quantity %></td>
+          <td class="delivery">30-40 min</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
 
@@ -30,5 +56,5 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 

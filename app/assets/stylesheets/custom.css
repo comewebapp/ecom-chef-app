@@ -861,6 +861,112 @@ p.smalltext {
 
 }
 
+/* ORDERS */
+
+.ordersTable {
+    width: 90%;    
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.ordersTable abbr {
+    font-size: 0;
+    text-decoration: none;
+    cursor: default;
+    border: none;
+}
+
+.ordersTable abbr::before {
+    font-size: 12px;
+    content: attr(title) " ";
+    display: table-cell;
+}
+
+.ordersTable td, 
+.ordersTable th {
+  padding: 15px;
+}
+
+.ordersTable thead tr {
+    border-bottom: 2px solid #000;
+}
+
+.ordersTable thead tr th {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.ordersTable thead tr th:nth-child(1) { width: 10%; }
+.ordersTable thead tr th:nth-child(2) { width: 20%; }
+.ordersTable thead tr th:nth-child(3) { width: 45%; text-align: left; }
+.ordersTable thead tr th:nth-child(4) { width: 10%; }
+.ordersTable thead tr th:nth-child(5) { width: 15%; text-align: left; }
+
+.ordersTable tbody {
+    font-weight: normal;
+}
+
+.ordersTable tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.ordersTable tbody tr td.title {
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.ordersTable tbody tr td.data {
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.ordersTable tbody tr td.stock {
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.ordersTable tbody tr td.delivery {
+    text-align: left;
+    text-transform: uppercase;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  
+    .ordersTable {
+        width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .ordersTable abbr {
+      font-size: 12px;
+  }
+  
+  .ordersTable abbr::before {     
+      font-size: 0;
+      text-decoration: none;
+  }
+  
+  .ordersTable thead tr th:nth-child(1) { width: 15%; }
+  .ordersTable thead tr th:nth-child(2) { width: 25%; }
+  .ordersTable thead tr th:nth-child(3) { width: 30%; }
+  .ordersTable thead tr th:nth-child(5) { width: 20%; text-align: center; }
+  
+  .ordersTable td, 
+  .ordersTable th {
+      padding: 15px 0;
+  }
+  
+  .ordersTable tbody tr td.title {
+      font-size: 13px;
+  }
+
+}
+
 .single {
   padding-right: 10%;
 }
