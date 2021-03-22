@@ -11,13 +11,15 @@
     </thead>
     <tbody>
       <% @orders.each do |order| %>
-        <tr>
-          <td class="stock"><%= order.name %></td>
-          <td class="stock"><%= order.created_at.to_datetime.strftime("%d/%m/%y") %> <br><%= order.created_at.to_datetime.to_datetime.strftime("%H:%M") %></td>
-          <td class="title"><%= order.line_items[0].name %></td>
-          <td class="stock"><%= order.line_items[0].quantity %></td>
-          <td class="delivery">30-40 min</td>
-        </tr>
+        <% if Product.find_by_shopify_product_id(order.line_items[0].product_id).try(:user) == current_user %>
+          <tr>
+            <td class="stock"><%= order.name %></td>
+            <td class="stock"><%= order.created_at.to_datetime.strftime("%d/%m/%y") %> <br><%= order.created_at.to_datetime.to_datetime.strftime("%H:%M") %></td>
+            <td class="title"><%= order.line_items[0].name %></td>
+            <td class="stock"><%= order.line_items[0].quantity %></td>
+            <td class="delivery">30-40 min</td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
