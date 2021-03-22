@@ -17,7 +17,14 @@
             <td class="stock"><%= order.created_at.to_datetime.strftime("%d/%m/%y") %> <br><%= order.created_at.to_datetime.to_datetime.strftime("%H:%M") %></td>
             <td class="title"><%= order.line_items[0].name %></td>
             <td class="stock"><%= order.line_items[0].quantity %></td>
-            <td class="delivery">30-40 min</td>
+            <td class="delivery">
+              <% order.line_items[0].properties.each_with_index do |property, index| %>
+                <% unless index == 0 %>
+                  <br>
+                <% end %>
+                <%= property.value %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% end %>
