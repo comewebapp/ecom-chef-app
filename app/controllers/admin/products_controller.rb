@@ -80,13 +80,6 @@ class Admin::ProductsController < Admin::ApplicationController
 
       @product.update(shopify_product_id: new_product.id)
 
-      # inventory item
-      inventory_item = ShopifyAPI::InventoryItem.find new_product.variants[0].inventory_item_id rescue nil
-      if inventory_item
-        inventory_item.tracked = true
-        inventory_item.save
-      end
-
       # images
       if @product.image_base64.present?
         new_product.images.each do |image|
@@ -129,6 +122,14 @@ class Admin::ProductsController < Admin::ApplicationController
         collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
         collection.add_product new_product
       end
+
+      # inventory item
+      inventory_item = ShopifyAPI::InventoryItem.find new_product.variants[0].inventory_item_id rescue nil
+      if inventory_item
+        inventory_item.tracked = true
+        inventory_item.save
+      end
+      
     end
   end
 
