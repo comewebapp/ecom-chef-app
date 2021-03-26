@@ -72,7 +72,7 @@ class Admin::ProductsController < Admin::ApplicationController
     new_product.vendor = @product.user.vendor
     new_product.save
     new_product.variants[0].price = @product.price
-    new_product.variants[0].sku = @product.available_quantity
+    # new_product.variants[0].sku = @product.available_quantity
     # new_product.variants[0].inventory_quantity = @product.available_quantity
     new_product.variants[0].weight = @product.weight
 
@@ -128,6 +128,14 @@ class Admin::ProductsController < Admin::ApplicationController
       if inventory_item
         inventory_item.tracked = true
         inventory_item.save
+
+        # inventory level
+        params_inventory_item_ids = {inventory_item_ids: inventory_item.id}
+        inventory_level = ShopifyAPI::InventoryLevel.find(:all, params: params_inventory_item_ids)[0] rescue nil
+
+        if inventory_level
+          inventory_level.adjust(@product.available_quantity - inventory_level.available)
+        end
       end
       
     end
