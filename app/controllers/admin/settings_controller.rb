@@ -38,7 +38,7 @@ class Admin::SettingsController < Admin::ApplicationController
           params_inventory_item_ids = {inventory_item_ids: inventory_item.id}
           inventory_level = ShopifyAPI::InventoryLevel.find(:all, params: params_inventory_item_ids)[0] rescue nil
 
-          if inventory_level
+          if inventory_level && inventory_level.available != 0
             inventory_level.adjust(0 - inventory_level.available)
           end
         end

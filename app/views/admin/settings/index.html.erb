@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body panel-content">
     <label for="title">Resetear el stock de todos los platos:</label>
-    <%= link_to 'Reset', reset_stock_admin_settings_path, class: "adminButton", method: :post, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Reset', reset_stock_admin_settings_path, class: "adminButton", method: :post, data: { confirm: '¿Estás seguro?' } %>
     <hr>
 		<%= form_with(model:[:admin, @setting], local:true) do |form| %>
 			<input type="hidden" name="authenticity_token" value="">
