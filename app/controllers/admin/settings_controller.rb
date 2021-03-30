@@ -22,6 +22,28 @@ class Admin::SettingsController < Admin::ApplicationController
   end
 
   def reset_stock
+    Product.all.each do |product|
+      new_product = ShopifyAPI::Product.find product.shopify_product_id rescue nil
+
+      if new_product
+
+        # inventory item
+        inventory_item = ShopifyAPI::InventoryItem.find new_product.variants[0].inventory_item_id rescue nil
+        if inventory_item
+          inventory_item.tracked = true
+          inventory_item.save
+
+          # inventory level
+          params_inventory_item_ids = {inventory_item_ids: inventory_item.id}
+          inventory_level = ShopifyAPI::InventoryLevel.find(:all, params: params_inventory_item_ids)[0] rescue nil
+
+          if inventory_level
+            inventory_level.adjust(product.available_quantity - inventory_level.available)
+          end
+        end
+      end
+
+    end
     redirect_to admin_settings_path
   end
 

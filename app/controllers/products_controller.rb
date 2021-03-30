@@ -71,6 +71,9 @@ class ProductsController < ApplicationController
             inventory_item = ShopifyAPI::InventoryItem.find new_product.variants[0].inventory_item_id rescue nil
             if inventory_item
 
+              inventory_item.tracked = true
+              inventory_item.save
+
               # inventory level
               params_inventory_item_ids = {inventory_item_ids: inventory_item.id}
               inventory_level = ShopifyAPI::InventoryLevel.find(:all, params: params_inventory_item_ids)[0] rescue nil
