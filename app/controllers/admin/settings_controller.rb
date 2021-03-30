@@ -23,6 +23,7 @@ class Admin::SettingsController < Admin::ApplicationController
 
   def reset_stock
     Product.all.each do |product|
+      product.update(available_quantity: 0)
       new_product = ShopifyAPI::Product.find product.shopify_product_id rescue nil
 
       if new_product
@@ -38,7 +39,7 @@ class Admin::SettingsController < Admin::ApplicationController
           inventory_level = ShopifyAPI::InventoryLevel.find(:all, params: params_inventory_item_ids)[0] rescue nil
 
           if inventory_level
-            inventory_level.adjust(product.available_quantity - inventory_level.available)
+            inventory_level.adjust(0 - inventory_level.available)
           end
         end
       end
