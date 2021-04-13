@@ -9,6 +9,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def update
     if @product.update(product_params)
+      @product.image_base64 = ("data:image/png;base64," + Base64.strict_encode64(File.open(params[:product][:image_base64].path).read)) if params[:product][:image_base64].present?
       @product.product_collections.destroy_all
       params[:product][:collection].reject(&:empty?).each do |collection_id|
         ProductCollection.create(product_id: @product.id, collection_id: collection_id)
@@ -60,7 +61,7 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:user_id, :name, :description, :image, :available_quantity, :price, :size, :status, :online)
+    params.require(:product).permit(:user_id, :name, :description, :available_quantity, :price, :size, :status, :online)
   end
 
   def update_on_shopify
