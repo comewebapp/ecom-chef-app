@@ -120,8 +120,8 @@ class Admin::ProductsController < Admin::ApplicationController
       }))
 
       @product.product_collections.each do |product_collection|
-        collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id)
-        collection.add_product new_product
+        collection = ShopifyAPI::CustomCollection.find(product_collection.collection_id) rescue nil
+        collection.add_product new_product if collection
       end
 
       # inventory item
