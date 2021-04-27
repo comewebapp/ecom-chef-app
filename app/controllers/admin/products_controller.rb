@@ -86,6 +86,7 @@ class Admin::ProductsController < Admin::ApplicationController
         new_product.images.each do |image|
           image.destroy
         end
+        new_product = ShopifyAPI::Product.find new_product.id
         i = ShopifyAPI::Image.new
         i.attach_image(Base64.decode64(@product.image_base64.gsub("data:image/png;base64,", ""))) # <-- attach_image is a method, not an attribute
         new_product.images << i
