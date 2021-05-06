@@ -17,7 +17,8 @@
   
   <div class="form-group">
     <%= form.label :collection, "Tipo de cocina" %>
-    <%= form.select :collection, (ShopifyAPI::CustomCollection.all + ShopifyAPI::SmartCollection.all).select{|c| !c.handle.include?("control_")}.map{|c| [c.title, c.id]}, {selected: @product.product_collections.map(&:collection_id)}, {multiple: true, class: 'form-control', size: 7} %>
+    <%= form.select :collection, ShopifyAPI::CustomCollection.all.select{|c| !c.handle.include?("control_")}.map{|c| [c.title, c.id]}, {selected: @product.product_collections.map(&:collection_id)}, {multiple: true, class: 'form-control', size: 7} %>
+    <%#= form.select :collection, (ShopifyAPI::CustomCollection.all + ShopifyAPI::SmartCollection.all).select{|c| !c.handle.include?("control_")}.map{|c| [c.title, c.id]}, {selected: @product.product_collections.map(&:collection_id)}, {multiple: true, class: 'form-control', size: 7} %>
   </div>
 
   <div class="form-group">
